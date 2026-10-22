@@ -138,7 +138,7 @@ export const ProducePillars: React.FC = () => {
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
+        <div className="reveal-on-scroll mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
           <div className="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2">
             COMPLETE SYSTEM ARCHITECTURE
           </div>
@@ -151,43 +151,51 @@ export const ProducePillars: React.FC = () => {
           </p>
         </div>
 
-        {/* 3 Pillar Tabs */}
-        <div className="flex items-center justify-center gap-2 sm:gap-3 max-w-2xl mx-auto mb-10 overflow-x-auto pb-2 no-scrollbar">
-          <button
-            onClick={() => setActivePillar(1)}
-            className={`px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 ${
-              activePillar === 1
-                ? 'bg-black dark:bg-emerald-500 text-white dark:text-black scale-[1.02]'
-                : 'bg-white/80 dark:bg-[#15181e] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800'
-            }`}
-          >
-            <span className="material-symbols-outlined text-sm">point_of_sale</span>
-            <span>1. Front-Lane POS Register</span>
-          </button>
+        {/* 3 Pillar Tabs - Responsive Segmented Navigation */}
+        <div className="reveal-on-scroll delay-100 w-full max-w-4xl mx-auto mb-10 sm:mb-12">
+          <div className="grid grid-cols-3 gap-1 sm:gap-2 p-1.5 rounded-2xl sm:rounded-full bg-neutral-200/50 dark:bg-[#12151b] border border-neutral-200 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs">
+            <button
+              onClick={() => setActivePillar(1)}
+              onMouseEnter={() => setActivePillar(1)}
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer ${
+                activePillar === 1
+                  ? 'bg-black dark:bg-emerald-500 text-white dark:text-black shadow-md scale-[1.01]'
+                  : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-neutral-800/50'
+              }`}
+            >
+              <span className="material-symbols-outlined text-base sm:text-lg shrink-0">point_of_sale</span>
+              <span className="hidden md:inline whitespace-nowrap">1. Front-Lane POS Register</span>
+              <span className="md:hidden text-center leading-tight">1. POS Register</span>
+            </button>
 
-          <button
-            onClick={() => setActivePillar(2)}
-            className={`px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 ${
-              activePillar === 2
-                ? 'bg-black dark:bg-emerald-500 text-white dark:text-black scale-[1.02]'
-                : 'bg-white/80 dark:bg-[#15181e] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800'
-            }`}
-          >
-            <span className="material-symbols-outlined text-sm">inventory_2</span>
-            <span>2. Smart Pricebook &amp; Inventory</span>
-          </button>
+            <button
+              onClick={() => setActivePillar(2)}
+              onMouseEnter={() => setActivePillar(2)}
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer ${
+                activePillar === 2
+                  ? 'bg-black dark:bg-emerald-500 text-white dark:text-black shadow-md scale-[1.01]'
+                  : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-neutral-800/50'
+              }`}
+            >
+              <span className="material-symbols-outlined text-base sm:text-lg shrink-0">inventory_2</span>
+              <span className="hidden md:inline whitespace-nowrap">2. Smart Pricebook &amp; Inventory</span>
+              <span className="md:hidden text-center leading-tight">2. Pricebook &amp; Inv</span>
+            </button>
 
-          <button
-            onClick={() => setActivePillar(3)}
-            className={`px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 ${
-              activePillar === 3
-                ? 'bg-black dark:bg-emerald-500 text-white dark:text-black scale-[1.02]'
-                : 'bg-white/80 dark:bg-[#15181e] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800'
-            }`}
-          >
-            <span className="material-symbols-outlined text-sm">analytics</span>
-            <span>3. Live Web Backoffice</span>
-          </button>
+            <button
+              onClick={() => setActivePillar(3)}
+              onMouseEnter={() => setActivePillar(3)}
+              className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer ${
+                activePillar === 3
+                  ? 'bg-black dark:bg-emerald-500 text-white dark:text-black shadow-md scale-[1.01]'
+                  : 'text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-neutral-800/50'
+              }`}
+            >
+              <span className="material-symbols-outlined text-base sm:text-lg shrink-0">analytics</span>
+              <span className="hidden md:inline whitespace-nowrap">3. Live Web Backoffice</span>
+              <span className="md:hidden text-center leading-tight">3. Web Backoffice</span>
+            </button>
+          </div>
         </div>
 
         {/* Feature Cards Grid (6 cards per pillar) */}
@@ -195,7 +203,7 @@ export const ProducePillars: React.FC = () => {
           {features.map((feat, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-[#121418]/70 border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs flex flex-col justify-between hover:shadow-lg dark:hover:border-neutral-700 transition-all duration-300 group"
+              className={`reveal-scale ${idx % 3 === 1 ? 'delay-150' : idx % 3 === 2 ? 'delay-300' : ''} card-hover-effect p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-[#121418]/70 border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs flex flex-col justify-between`}
             >
               <div>
                 <div className="flex items-center justify-between mb-4">

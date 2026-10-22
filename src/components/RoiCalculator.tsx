@@ -19,7 +19,7 @@ export const RoiCalculator: React.FC<{ onOpenModal: () => void }> = ({ onOpenMod
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div className="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -35,7 +35,7 @@ export const RoiCalculator: React.FC<{ onOpenModal: () => void }> = ({ onOpenMod
         </div>
 
         {/* Calculator Card Container */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-neutral-50/70 dark:bg-[#121418]/70 p-6 sm:p-10 md:p-12 rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs max-w-5xl mx-auto">
+        <div className="reveal-scale delay-150 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-neutral-50/70 dark:bg-[#121418]/70 p-6 sm:p-10 md:p-12 rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs max-w-5xl mx-auto">
           
           {/* Sliders Area (6 cols) */}
           <div className="lg:col-span-6 flex flex-col gap-6">

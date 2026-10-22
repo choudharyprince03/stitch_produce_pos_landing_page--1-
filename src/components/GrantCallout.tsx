@@ -5,7 +5,7 @@ export const GrantCallout: React.FC<{ onOpenModal: () => void }> = ({ onOpenModa
     <section className="w-full py-12 sm:py-20 md:py-24 bg-[#fafaf9] dark:bg-[#09090b] transition-colors" id="grant">
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div className="rounded-[2.5rem] sm:rounded-[3rem] bg-black text-white p-6 sm:p-14 md:p-20 relative overflow-hidden flex flex-col items-start justify-between shadow-2xl border border-white/10">
+        <div className="reveal-scale rounded-[2.5rem] sm:rounded-[3rem] bg-black text-white p-6 sm:p-14 md:p-20 relative overflow-hidden flex flex-col items-start justify-between shadow-2xl border border-white/10">
           
           {/* Subtle green ambient light */}
           <div className="absolute top-0 right-0 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-emerald-500/15 blur-[100px] sm:blur-[140px] pointer-events-none"></div>

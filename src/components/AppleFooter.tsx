@@ -65,7 +65,12 @@ export const AppleFooter: React.FC = () => {
 
         {/* Bottom line */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 sm:pt-8 border-t border-neutral-200 dark:border-neutral-800/80 text-[11px]">
-          <div>Copyright &copy; 2026 Produce AI POS Inc. All rights reserved.</div>
+          <div className="flex items-center gap-3">
+            <div className="h-7 px-2 py-0.5 rounded-lg bg-black border border-white/10 flex items-center justify-center">
+              <img src="/images/produce_ai_logo.png" alt="Produce Ai" className="h-full w-auto object-contain" />
+            </div>
+            <span>Copyright &copy; 2026 Produce AI POS Inc. All rights reserved.</span>
+          </div>
           <div className="flex gap-4 sm:gap-6 font-mono-telemetry">
             <a href="#" className="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a>

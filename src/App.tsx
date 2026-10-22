@@ -14,6 +14,7 @@ import { LeadModal } from './components/LeadModal';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('stitch_theme');
@@ -22,6 +23,51 @@ export default function App() {
     }
     return 'dark'; // Default dark for futuristic sleek visual impact
   });
+
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      const progress = totalScroll > 0 ? (currentScroll / totalScroll) * 100 : 0;
+      setScrollProgress(progress);
+
+      if (window.scrollY > 260) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // IntersectionObserver for fluid Apple-grade scroll reveals
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    const elements = document.querySelectorAll('.reveal-on-scroll, .reveal-scale, .reveal-fade');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
     const root = document.documentElement;
@@ -52,6 +98,12 @@ export default function App() {
   return (
     <div className="w-full min-h-screen bg-[#fafaf9] dark:bg-[#090b0e] text-black dark:text-white font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-500 dark:selection:bg-emerald-400/20 dark:selection:text-emerald-400 transition-colors duration-300">
       
+      {/* Sleek Apple-Grade Scroll Progress Bar */}
+      <div 
+        className="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-300 z-50 transition-all duration-150 ease-out shadow-[0_0_12px_rgba(16,185,129,0.85)] pointer-events-none"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
       {/* Frosted Glass Navigation with Active Theme Toggle */}
       <AppleNavbar 
         onOpenModal={() => setIsModalOpen(true)} 
@@ -94,6 +146,17 @@ export default function App() {
 
       {/* Friction-Free Hardware Reservation Dialog */}
       <LeadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* Phone View: Floating Go on Top Button */}
+      <button
+        onClick={scrollToTop}
+        aria-label="Go to top"
+        className={`sm:hidden fixed bottom-6 right-5 z-40 w-12 h-12 rounded-full bg-black/90 dark:bg-emerald-500 text-white dark:text-black shadow-2xl border border-white/20 dark:border-black/20 flex items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer active:scale-90 ${
+          showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+      >
+        <span className="material-symbols-outlined text-2xl font-bold">arrow_upward</span>
+      </button>
     </div>
   );
 }

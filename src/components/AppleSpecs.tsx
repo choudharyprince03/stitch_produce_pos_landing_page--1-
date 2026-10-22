@@ -17,7 +17,7 @@ export const AppleSpecs: React.FC = () => {
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="mb-10 sm:mb-14">
+        <div className="reveal-on-scroll mb-10 sm:mb-14">
           <div className="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             SYSTEM SPECIFICATIONS
@@ -28,7 +28,7 @@ export const AppleSpecs: React.FC = () => {
         </div>
 
         {/* Minimalist Spec Grid with Glass Styling */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 divide-y divide-neutral-200 dark:divide-neutral-800/80">
+        <div className="reveal-on-scroll delay-150 grid grid-cols-1 md:grid-cols-2 gap-x-12 divide-y divide-neutral-200 dark:divide-neutral-800/80">
           {specs.map((spec, i) => (
             <div key={i} className="py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-2">
               <span className="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">{spec.label}</span>

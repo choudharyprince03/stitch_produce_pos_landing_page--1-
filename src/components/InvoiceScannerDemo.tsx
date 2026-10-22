@@ -34,7 +34,7 @@ export const InvoiceScannerDemo: React.FC = () => {
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div className="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -51,7 +51,7 @@ export const InvoiceScannerDemo: React.FC = () => {
         </div>
 
         {/* Interactive Scanner Comparison Stage */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center bg-white/70 dark:bg-[#121418]/70 p-5 sm:p-8 md:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs">
+        <div className="reveal-scale delay-150 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center bg-white/70 dark:bg-[#121418]/70 p-5 sm:p-8 md:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs">
           
           {/* Left Visual: Paper Invoice Scanner with Live Laser Effect (6 cols) */}
           <div className="lg:col-span-6 flex flex-col gap-4">

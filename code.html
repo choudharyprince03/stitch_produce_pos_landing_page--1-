@@ -5,6 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Produce AI POS | Next-Gen Produce & Grocery Point of Sale System</title>
   <meta name="description" content="Produce AI POS is the fastest, smartest point-of-sale and backoffice management system engineered specifically for produce markets, grocery stores, and retail markets. Sub-3s checkout. 100% Free Hardware.">
+  <link rel="icon" type="image/png" href="images/produce_ai_logo.png">
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -48,68 +49,87 @@
     .animate-float-slow {
       animation: floatGentle 6s ease-in-out infinite;
     }
+    @keyframes marqueeLeftToRight {
+      0% { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0%, 0, 0); }
+    }
+    .animate-marquee-ltr {
+      display: flex;
+      width: max-content;
+      animation: marqueeLeftToRight 45s linear infinite;
+      will-change: transform;
+    }
+    .animate-marquee-ltr:hover {
+      animation-play-state: paused;
+    }
+
+    /* Apple-Grade Scroll Reveal & Transition Animations */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.94) translateY(28px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-scale.is-revealed {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    .delay-75 { transition-delay: 75ms; }
+    .delay-150 { transition-delay: 150ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+
+    .card-hover-effect {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+    .card-hover-effect:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.12), 0 0 0 1px rgba(16, 185, 129, 0.25);
+    }
+    .dark .card-hover-effect:hover {
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(16, 185, 129, 0.35);
+    }
   </style>
 </head>
 
 <body class="bg-[#fafaf9] dark:bg-[#090b0e] text-black dark:text-white font-sans antialiased selection:bg-emerald-500/20 selection:text-emerald-500 dark:selection:bg-emerald-400/20 dark:selection:text-emerald-400 min-h-screen transition-colors duration-300">
 
-  <!-- Top Micro Ticker Banner -->
-  <div class="w-full bg-[#050806] dark:bg-black text-emerald-400 py-2 px-4 text-center text-[11px] font-mono-telemetry tracking-wider uppercase border-b border-white/5 transition-colors">
-    <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
-      <span className="inline-flex items-center gap-1.5">
-        <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1"></span>
-        <strong class="text-white">PRODUCE AI POS</strong>
-      </span>
-      <span class="hidden sm:inline text-neutral-500">&bull;</span>
-      <span>12 Free Hardware Packages Available</span>
-      <span class="hidden sm:inline text-neutral-500">&bull;</span>
-      <span class="text-neutral-300">Zebra Scale Native (0.1s)</span>
-      <span class="hidden sm:inline text-neutral-500">&bull;</span>
-      <span class="text-emerald-300 font-bold">$0 Upfront Cost</span>
-    </div>
-  </div>
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress-bar" class="fixed top-0 left-0 h-[3px] bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-300 z-50 transition-all duration-150 ease-out shadow-[0_0_12px_rgba(16,185,129,0.85)] pointer-events-none" style="width: 0%"></div>
 
   <!-- Apple-Style Frosted Navbar -->
   <header class="sticky top-0 z-50 w-full backdrop-blur-2xl bg-white/75 dark:bg-[#090b0e]/80 border-b border-black/5 dark:border-white/10 transition-all duration-300 shadow-xs">
     <div class="max-w-[1340px] mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
       
-      <!-- Brand -->
-      <a href="#" class="flex items-center gap-2.5 group">
-        <span class="w-8 h-8 rounded-xl bg-black dark:bg-emerald-500 text-white dark:text-black flex items-center justify-center text-xs font-black font-mono-telemetry group-hover:scale-105 transition-all shadow-sm">
-          AI
-        </span>
-        <div class="flex flex-col text-left">
-          <div class="flex items-center gap-1.5">
-            <span class="font-black tracking-tight text-black dark:text-white text-sm sm:text-base uppercase leading-none">
-              Produce AI
-            </span>
-            <span class="px-1.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[9px] font-mono-telemetry font-bold">
-              POS
-            </span>
-          </div>
-          <span class="text-[9px] font-mono-telemetry text-neutral-500 dark:text-neutral-400 tracking-wider">
-            Grocery Operating System
-          </span>
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center group">
+        <div class="h-9 sm:h-10 px-2.5 py-1 rounded-xl bg-black border border-white/10 shadow-xs flex items-center justify-center group-hover:border-emerald-500/40 group-hover:scale-105 transition-all duration-300">
+          <img src="images/produce_ai_logo.png" alt="Produce Ai" class="h-full w-auto object-contain">
         </div>
       </a>
 
       <!-- Desktop Nav Links -->
       <nav class="hidden lg:flex items-center gap-7 text-[13px] font-semibold text-neutral-600 dark:text-neutral-300 tracking-tight">
-        <a href="#register-demo" class="hover:text-black dark:hover:text-white transition-colors">Live Register</a>
-        <a href="#ai-invoices" class="hover:text-black dark:hover:text-white transition-colors flex items-center gap-1">
-          <span>AI Invoices</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-        </a>
-        <a href="#hardware" class="hover:text-black dark:hover:text-white transition-colors">Free Hardware</a>
         <a href="#pillars" class="hover:text-black dark:hover:text-white transition-colors">System Features</a>
-        <a href="#roi" class="hover:text-black dark:hover:text-white transition-colors">ROI Calculator</a>
         <a href="#faq" class="hover:text-black dark:hover:text-white transition-colors">FAQs</a>
       </nav>
 
       <!-- Right Action Area -->
       <div class="flex items-center gap-2 sm:gap-3">
-        <!-- Theme Toggle Button -->
-        <button id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme" class="w-10 h-10 rounded-full border border-neutral-200 dark:border-neutral-700/80 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 flex items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs backdrop-blur-md">
+        <!-- Theme Toggle Button (Hidden on phone view) -->
+        <button id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme" class="hidden sm:flex w-10 h-10 rounded-full border border-neutral-200 dark:border-neutral-700/80 bg-neutral-100/80 dark:bg-neutral-800/80 text-neutral-800 dark:text-neutral-200 items-center justify-center transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-xs backdrop-blur-md">
           <span class="material-symbols-outlined text-lg text-amber-300" id="theme-icon">light_mode</span>
         </button>
 
@@ -118,8 +138,8 @@
           (347) 213-0687
         </a>
 
-        <!-- CTA Button -->
-        <button onclick="document.getElementById('hardware-modal').classList.remove('hidden')" class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-black dark:bg-emerald-500 text-white dark:text-black text-xs font-bold tracking-tight hover:bg-neutral-800 dark:hover:bg-emerald-400 transition-all cursor-pointer shadow-sm hover:scale-[1.02]">
+        <!-- CTA Button (Hidden on phone view) -->
+        <button onclick="document.getElementById('hardware-modal').classList.remove('hidden')" class="hidden sm:inline-flex px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-black dark:bg-emerald-500 text-white dark:text-black text-xs font-bold tracking-tight hover:bg-neutral-800 dark:hover:bg-emerald-400 transition-all cursor-pointer shadow-sm hover:scale-[1.02]">
           Get Free Hardware
         </button>
 
@@ -133,15 +153,18 @@
 
     <!-- Mobile Dropdown Drawer -->
     <div id="mobile-drawer" class="hidden lg:hidden w-full bg-white/95 dark:bg-[#0c0e12]/95 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 px-6 py-5 flex flex-col gap-4 text-sm font-semibold text-neutral-800 dark:text-neutral-200">
-      <a href="#register-demo" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">Live Register Simulator</a>
-      <a href="#ai-invoices" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600 flex items-center justify-between">
-        <span>AI Vendor Invoice Scanner</span>
-        <span class="text-[10px] font-mono-telemetry text-emerald-500 uppercase">New</span>
-      </a>
-      <a href="#hardware" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">Free Hardware Equipment</a>
-      <a href="#pillars" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">System Features &amp; Architecture</a>
-      <a href="#roi" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">Store Savings Calculator</a>
-      <a href="#faq" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">Frequently Asked Questions</a>
+      <a href="#pillars" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">System Features</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="py-1 hover:text-emerald-600">FAQs</a>
+      <div class="pt-2 flex items-center justify-between sm:hidden">
+        <span class="text-xs text-neutral-500 font-medium">Appearance</span>
+        <button onclick="toggleTheme()" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 text-xs font-semibold cursor-pointer">
+          <span class="material-symbols-outlined text-sm text-amber-400 dark:text-amber-300">light_mode</span>
+          <span>Theme Toggle</span>
+        </button>
+      </div>
+      <button onclick="toggleMobileMenu(); document.getElementById('hardware-modal').classList.remove('hidden')" class="w-full py-3 rounded-full bg-black dark:bg-emerald-500 text-white dark:text-black text-xs font-bold uppercase tracking-wider cursor-pointer shadow-md">
+        Get Free Hardware
+      </button>
       <div class="pt-3 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs font-mono-telemetry">
         <span>Call store specialist:</span>
         <a href="tel:3472130687" class="font-bold text-emerald-600 dark:text-emerald-400">(347) 213-0687</a>
@@ -238,29 +261,334 @@
 
     <!-- 1. HERO SECTION: Nike + Apple Monumental Layout -->
     <section class="relative w-full pt-12 pb-16 sm:pt-20 sm:pb-24 lg:pt-28 lg:pb-32 bg-[#fafaf9] dark:bg-[#090b0e] transition-colors overflow-hidden">
-      <div class="absolute inset-0 pointer-events-none overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] lg:w-[1000px] h-[350px] sm:h-[500px] bg-emerald-500/10 dark:bg-emerald-500/12 blur-[100px] sm:blur-[140px] rounded-full"></div>
+      <!-- Fresh Produce Ambient Background -->
+      <div class="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
+        <img src="images/produce_ambient.jpg" alt="Fresh produce background" class="w-full h-full object-cover object-center scale-105 opacity-25 dark:opacity-20 filter contrast-110 saturate-125">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#fafaf9]/90 via-[#fafaf9]/80 to-[#fafaf9] dark:from-[#090b0e]/92 dark:via-[#090b0e]/82 dark:to-[#090b0e]"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#fafaf9]/85 via-transparent to-[#fafaf9]/85 dark:from-[#090b0e]/85 dark:via-transparent dark:to-[#090b0e]/85"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[700px] lg:w-[1000px] h-[350px] sm:h-[500px] bg-emerald-500/15 dark:bg-emerald-500/18 blur-[100px] sm:blur-[140px] rounded-full"></div>
+        <div class="absolute top-1/2 right-10 w-[250px] sm:w-[450px] h-[250px] sm:h-[450px] bg-teal-500/10 dark:bg-teal-500/12 blur-[120px] rounded-full"></div>
       </div>
 
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center text-center">
-        
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900/90 dark:bg-neutral-800/90 text-white text-[11px] font-mono-telemetry uppercase tracking-wider mb-5 sm:mb-6 shadow-sm border border-white/10 backdrop-blur-md">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span>Produce AI POS &bull; Live Lane Register v1.0</span>
-        </div>
-
-        <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-black dark:text-white uppercase leading-[0.93] max-w-5xl mb-5 sm:mb-6">
-          Weigh. Ring. <br>
+        <h1 class="reveal-on-scroll text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-black dark:text-white uppercase leading-[0.95] max-w-5xl mb-5 sm:mb-6">
+          The POS Built For <br>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-400">
-            Done.
+            Fresh Produce.
           </span>
         </h1>
 
-        <p class="text-base sm:text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 max-w-3xl font-medium tracking-tight mb-8 sm:mb-10 leading-snug px-2">
+        <p class="reveal-on-scroll delay-150 text-base sm:text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 max-w-3xl font-medium tracking-tight mb-8 sm:mb-10 leading-snug px-2">
           The fastest point-of-sale and backoffice system built for supermarkets and fresh produce markets. Native Zebra scale sync in 0.1s, AI vendor invoice digitizer, and 100% offline resilience.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-12 sm:mb-16 px-4">
+        <!-- Long Horizontal Moving Strip (Moving Left to Right Continuously) -->
+        <div class="reveal-on-scroll delay-200 w-full max-w-[1400px] mb-8 sm:mb-10 relative overflow-hidden py-2">
+          <div class="flex items-center justify-center gap-2 mb-3.5 text-[10px] sm:text-[11px] font-mono-telemetry uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Produce Live Stream Catalog</span>
+          </div>
+
+          <div class="pointer-events-none absolute left-0 top-8 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#fafaf9] dark:from-[#090b0e] to-transparent z-10"></div>
+          <div class="pointer-events-none absolute right-0 top-8 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#fafaf9] dark:from-[#090b0e] to-transparent z-10"></div>
+
+          <div class="flex animate-marquee-ltr gap-3 sm:gap-4 select-none cursor-default py-1">
+            <!-- Set 1 -->
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🥑</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Hass Avocado</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4046</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$1.29 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">0.1s Tare</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍎</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Honeycrisp Apple</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4173</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$2.49 / lb</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Optical Scale</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍌</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Cavendish Banana</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4011</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$0.59 / lb</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Fast Velocity</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">⚡</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Zebra Bi-Optic Bridge</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">v3.2 DRIVER</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">Native 0.08s</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">NTEP Legal</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍋</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Meyer Lemons</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4304</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$0.79 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">USDA EBT Split</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🥬</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Lacinato Dino Kale</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #94627</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$2.49 / bu</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Organic Cert</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🤖</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">AI Invoice Scanner</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PO DIGITIZER</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">Zero Manual Math</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">99.8% Accuracy</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍓</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Sweet Strawberries</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4250</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$3.99 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">ESL Tag Sync</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🥕</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Heirloom Carrots</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4562</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$1.99 / lb</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Visual PLU AI</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍉</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Seedless Watermelon</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4032</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$5.99 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Sub-Sec Weight</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🛡️</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Offline SQLite Edge</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">LOCAL DB</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">Zero Wi-Fi Loss</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">100% Active</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🆓</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Complete POS Hardware</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">FREE GRANT</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$0 Upfront</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">12 Bundles Left</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Set 2 (Identical for seamless infinite left-to-right loop) -->
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🥑</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Hass Avocado</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4046</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$1.29 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">0.1s Tare</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍎</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Honeycrisp Apple</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4173</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$2.49 / lb</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Optical Scale</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍌</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Cavendish Banana</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4011</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$0.59 / lb</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Fast Velocity</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">⚡</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Zebra Bi-Optic Bridge</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">v3.2 DRIVER</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">Native 0.08s</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">NTEP Legal</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍋</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Meyer Lemons</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4304</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$0.79 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">USDA EBT Split</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🥬</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Lacinato Dino Kale</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #94627</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$2.49 / bu</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Organic Cert</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🤖</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">AI Invoice Scanner</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PO DIGITIZER</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">Zero Manual Math</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">99.8% Accuracy</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍓</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Sweet Strawberries</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4250</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$3.99 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">ESL Tag Sync</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🥕</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Heirloom Carrots</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4562</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$1.99 / lb</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Visual PLU AI</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🍉</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Seedless Watermelon</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">PLU #4032</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$5.99 / ea</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">Sub-Sec Weight</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🛡️</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Offline SQLite Edge</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">LOCAL DB</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">Zero Wi-Fi Loss</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">100% Active</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-white/80 dark:bg-[#121418]/85 backdrop-blur-xl border border-neutral-200/90 dark:border-white/10 shadow-xs hover:border-emerald-500/50 hover:bg-white dark:hover:bg-[#161a20] transition-all shrink-0 group">
+              <span class="text-2xl sm:text-3xl shrink-0 group-hover:scale-110 transition-transform">🆓</span>
+              <div class="flex flex-col text-left whitespace-nowrap">
+                <div class="flex items-center gap-1.5">
+                  <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Complete POS Hardware</span>
+                  <span class="text-[10px] font-mono-telemetry font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/20 px-1.5 py-0.5 rounded-md">FREE GRANT</span>
+                </div>
+                <div class="flex items-center gap-2 text-[10px] sm:text-[11px] font-mono-telemetry text-neutral-500 dark:text-neutral-400">
+                  <span class="text-neutral-700 dark:text-neutral-200 font-semibold">$0 Upfront</span><span>&bull;</span><span class="text-emerald-600 dark:text-emerald-400 font-medium">12 Bundles Left</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Actions -->
+        <div class="reveal-on-scroll delay-300 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto mb-12 sm:mb-16 px-4">
           <button onclick="document.getElementById('hardware-modal').classList.remove('hidden')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-black dark:bg-emerald-500 text-white dark:text-black text-xs sm:text-sm font-bold tracking-tight hover:bg-neutral-800 dark:hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer shadow-lg">
             Claim Free Hardware &bull; $0 Due
           </button>
@@ -270,7 +598,7 @@
         </div>
 
         <!-- Full-Bleed Showcase with Glass Widgets -->
-        <div class="w-full max-w-6xl relative group px-1 sm:px-0">
+        <div class="reveal-scale delay-200 w-full max-w-6xl relative group px-1 sm:px-0">
           <div class="relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden bg-neutral-950 border border-neutral-200/80 dark:border-neutral-800/80 shadow-2xl">
             <img src="images/pos_terminal_hero.jpg" alt="Produce AI POS Dual Screen Terminal" class="w-full aspect-[4/3] sm:aspect-[16/10] md:aspect-[16/9] object-cover object-center group-hover:scale-[1.015] transition-transform duration-700">
             
@@ -337,7 +665,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-white dark:bg-[#0d0f14] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="register-demo">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -352,7 +680,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start max-w-6xl mx-auto">
+        <div class="reveal-scale delay-150 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start max-w-6xl mx-auto">
           
           <div class="lg:col-span-6 flex flex-col gap-4">
             <div class="flex items-center justify-between">
@@ -493,7 +821,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-[#fafaf9] dark:bg-[#090b0e] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="ai-invoices">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -509,7 +837,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center bg-white/70 dark:bg-[#121418]/70 p-5 sm:p-8 md:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs">
+        <div class="reveal-scale delay-150 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center bg-white/70 dark:bg-[#121418]/70 p-5 sm:p-8 md:p-10 rounded-[2rem] sm:rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs">
           
           <div class="lg:col-span-6 flex flex-col gap-4">
             <div class="relative rounded-2xl sm:rounded-3xl overflow-hidden bg-neutral-900 border border-neutral-300 dark:border-neutral-700 aspect-[16/11] p-5 sm:p-6 text-white font-mono-telemetry flex flex-col justify-between shadow-lg" id="invoice-mockup">
@@ -620,7 +948,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-white dark:bg-[#0d0f14] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="hardware">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -637,7 +965,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           
-          <div class="group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between hover:shadow-xl dark:hover:shadow-2xl dark:hover:border-neutral-700 transition-all duration-300">
+          <div class="reveal-scale card-hover-effect group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between">
             <div class="w-full aspect-[16/11] overflow-hidden bg-neutral-900 relative">
               <img src="images/pos_terminal_hero.jpg" alt="Dual Touchscreens" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-emerald-400 font-mono-telemetry text-[10px] font-bold">
@@ -664,7 +992,7 @@
             </div>
           </div>
 
-          <div class="group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between hover:shadow-xl dark:hover:shadow-2xl dark:hover:border-neutral-700 transition-all duration-300">
+          <div class="reveal-scale delay-150 card-hover-effect group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between">
             <div class="w-full aspect-[16/11] overflow-hidden bg-neutral-900 relative">
               <img src="images/bioptic_scale.jpg" alt="Built-In Scanner Scale" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-emerald-400 font-mono-telemetry text-[10px] font-bold">
@@ -691,7 +1019,7 @@
             </div>
           </div>
 
-          <div class="group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between hover:shadow-xl dark:hover:shadow-2xl dark:hover:border-neutral-700 transition-all duration-300">
+          <div class="reveal-scale delay-300 card-hover-effect group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between">
             <div class="w-full aspect-[16/11] overflow-hidden bg-neutral-900 relative">
               <img src="images/handheld_scanner.jpg" alt="Handheld Store Scanner" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-emerald-400 font-mono-telemetry text-[10px] font-bold">
@@ -718,7 +1046,7 @@
             </div>
           </div>
 
-          <div class="group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between hover:shadow-xl dark:hover:shadow-2xl dark:hover:border-neutral-700 transition-all duration-300">
+          <div class="reveal-scale card-hover-effect group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between">
             <div class="w-full aspect-[16/11] overflow-hidden bg-neutral-900 relative">
               <img src="images/electronic_shelf_labels.jpg" alt="Digital Price Tags" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-emerald-400 font-mono-telemetry text-[10px] font-bold">
@@ -745,7 +1073,7 @@
             </div>
           </div>
 
-          <div class="group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between hover:shadow-xl dark:hover:shadow-2xl dark:hover:border-neutral-700 transition-all duration-300">
+          <div class="reveal-scale delay-150 card-hover-effect group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between">
             <div class="w-full aspect-[16/11] overflow-hidden bg-neutral-900 relative">
               <img src="images/pinpad_printer.jpg" alt="Card Reader & Silent Printer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
               <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/85 backdrop-blur-md text-emerald-400 font-mono-telemetry text-[10px] font-bold">
@@ -808,7 +1136,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-[#fafaf9] dark:bg-[#090b0e] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="pillars">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
+        <div class="reveal-on-scroll mb-10 sm:mb-14 text-center max-w-3xl mx-auto">
           <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2">
             COMPLETE SYSTEM ARCHITECTURE
           </div>
@@ -821,19 +1149,25 @@
           </p>
         </div>
 
-        <div class="flex items-center justify-center gap-2 sm:gap-3 max-w-2xl mx-auto mb-10 overflow-x-auto pb-2 no-scrollbar">
-          <button id="pillar-tab-1" onclick="switchPillarTab(1)" class="px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 bg-black dark:bg-emerald-500 text-white dark:text-black scale-[1.02]">
-            <span class="material-symbols-outlined text-sm">point_of_sale</span>
-            <span>1. Front-Lane POS Register</span>
-          </button>
-          <button id="pillar-tab-2" onclick="switchPillarTab(2)" class="px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 bg-white/80 dark:bg-[#15181e] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800">
-            <span class="material-symbols-outlined text-sm">inventory_2</span>
-            <span>2. Smart Pricebook &amp; Inventory</span>
-          </button>
-          <button id="pillar-tab-3" onclick="switchPillarTab(3)" class="px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 bg-white/80 dark:bg-[#15181e] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800">
-            <span class="material-symbols-outlined text-sm">analytics</span>
-            <span>3. Live Web Backoffice</span>
-          </button>
+        <!-- 3 Pillar Tabs - Responsive Segmented Navigation -->
+        <div class="reveal-on-scroll delay-100 w-full max-w-4xl mx-auto mb-10 sm:mb-12">
+          <div class="grid grid-cols-3 gap-1 sm:gap-2 p-1.5 rounded-2xl sm:rounded-full bg-neutral-200/50 dark:bg-[#12151b] border border-neutral-200 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs">
+            <button id="pillar-tab-1" onclick="switchPillarTab(1)" onmouseenter="switchPillarTab(1)" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer bg-black dark:bg-emerald-500 text-white dark:text-black shadow-md scale-[1.01]">
+              <span class="material-symbols-outlined text-base sm:text-lg shrink-0">point_of_sale</span>
+              <span class="hidden md:inline whitespace-nowrap">1. Front-Lane POS Register</span>
+              <span class="md:hidden text-center leading-tight">1. POS Register</span>
+            </button>
+            <button id="pillar-tab-2" onclick="switchPillarTab(2)" onmouseenter="switchPillarTab(2)" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-neutral-800/50">
+              <span class="material-symbols-outlined text-base sm:text-lg shrink-0">inventory_2</span>
+              <span class="hidden md:inline whitespace-nowrap">2. Smart Pricebook &amp; Inventory</span>
+              <span class="md:hidden text-center leading-tight">2. Pricebook &amp; Inv</span>
+            </button>
+            <button id="pillar-tab-3" onclick="switchPillarTab(3)" onmouseenter="switchPillarTab(3)" class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-neutral-800/50">
+              <span class="material-symbols-outlined text-base sm:text-lg shrink-0">analytics</span>
+              <span class="hidden md:inline whitespace-nowrap">3. Live Web Backoffice</span>
+              <span class="md:hidden text-center leading-tight">3. Web Backoffice</span>
+            </button>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6" id="pillar-cards-container">
@@ -847,7 +1181,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-white dark:bg-[#0d0f14] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="roi">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div class="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -862,7 +1196,7 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-neutral-50/70 dark:bg-[#121418]/70 p-6 sm:p-10 md:p-12 rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs max-w-5xl mx-auto">
+        <div class="reveal-scale delay-150 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-neutral-50/70 dark:bg-[#121418]/70 p-6 sm:p-10 md:p-12 rounded-[2.5rem] border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs max-w-5xl mx-auto">
           
           <div class="lg:col-span-6 flex flex-col gap-6">
             <div class="flex flex-col gap-2.5">
@@ -953,7 +1287,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-white dark:bg-[#0d0f14] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="specs">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="mb-10 sm:mb-14">
+        <div class="reveal-on-scroll mb-10 sm:mb-14">
           <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             SYSTEM SPECIFICATIONS
@@ -963,7 +1297,7 @@
           </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 divide-y divide-neutral-200 dark:divide-neutral-800/80">
+        <div class="reveal-on-scroll delay-150 grid grid-cols-1 md:grid-cols-2 gap-x-12 divide-y divide-neutral-200 dark:divide-neutral-800/80">
           <div class="py-4 sm:py-5 flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 sm:gap-2">
             <span class="text-xs sm:text-sm font-bold text-black dark:text-white tracking-tight">Produce Scale Bridge</span>
             <span class="text-xs sm:text-sm font-mono-telemetry text-neutral-600 dark:text-neutral-400 sm:text-right">Native drivers for Zebra MP7000, Magellan, CAS &bull; &lt; 0.1s latency</span>
@@ -1005,7 +1339,7 @@
     <section class="w-full py-16 sm:py-24 md:py-28 bg-[#fafaf9] dark:bg-[#090b0e] border-b border-neutral-200 dark:border-neutral-800/80 transition-colors" id="faq">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="mb-10 sm:mb-14 text-center max-w-2xl mx-auto">
+        <div class="reveal-on-scroll mb-10 sm:mb-14 text-center max-w-2xl mx-auto">
           <div class="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2">
             FREQUENTLY ASKED QUESTIONS
           </div>
@@ -1015,7 +1349,7 @@
           </h2>
         </div>
 
-        <div class="max-w-3xl mx-auto flex flex-col gap-3.5" id="code-faqs-container">
+        <div class="reveal-on-scroll delay-150 max-w-3xl mx-auto flex flex-col gap-3.5" id="code-faqs-container">
           <!-- Populated by JS -->
         </div>
 
@@ -1026,7 +1360,7 @@
     <section class="w-full py-12 sm:py-20 md:py-24 bg-[#fafaf9] dark:bg-[#090b0e] transition-colors" id="grant">
       <div class="max-w-[1340px] mx-auto px-4 sm:px-6">
         
-        <div class="rounded-[2.5rem] sm:rounded-[3rem] bg-black text-white p-6 sm:p-14 md:p-20 relative overflow-hidden flex flex-col items-start justify-between shadow-2xl border border-white/10">
+        <div class="reveal-scale rounded-[2.5rem] sm:rounded-[3rem] bg-black text-white p-6 sm:p-14 md:p-20 relative overflow-hidden flex flex-col items-start justify-between shadow-2xl border border-white/10">
           
           <div class="absolute top-0 right-0 w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-emerald-500/15 blur-[100px] sm:blur-[140px] pointer-events-none"></div>
 
@@ -1115,7 +1449,12 @@
       </div>
 
       <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 sm:pt-8 border-t border-neutral-200 dark:border-neutral-800/80 text-[11px]">
-        <div>Copyright &copy; 2026 Produce AI POS Inc. All rights reserved.</div>
+        <div class="flex items-center gap-3">
+          <div class="h-7 px-2 py-0.5 rounded-lg bg-black border border-white/10 flex items-center justify-center">
+            <img src="images/produce_ai_logo.png" alt="Produce Ai" class="h-full w-auto object-contain">
+          </div>
+          <span>Copyright &copy; 2026 Produce AI POS Inc. All rights reserved.</span>
+        </div>
         <div class="flex gap-4 sm:gap-6 font-mono-telemetry">
           <a href="#" class="hover:text-black dark:hover:text-white transition-colors">Privacy Policy</a>
           <a href="#" class="hover:text-black dark:hover:text-white transition-colors">Terms of Service</a>
@@ -1126,8 +1465,61 @@
     </div>
   </footer>
 
+  <!-- Phone View: Floating Go on Top Button -->
+  <button id="go-to-top-btn" onclick="scrollToTop()" aria-label="Go to top" class="sm:hidden fixed bottom-6 right-5 z-40 w-12 h-12 rounded-full bg-black/90 dark:bg-emerald-500 text-white dark:text-black shadow-2xl border border-white/20 dark:border-black/20 flex items-center justify-center transition-all duration-300 backdrop-blur-md cursor-pointer active:scale-90 opacity-0 translate-y-4 pointer-events-none">
+    <span class="material-symbols-outlined text-2xl font-bold">arrow_upward</span>
+  </button>
+
   <!-- Interactivity Scripts -->
   <script>
+    // Scroll To Top Logic
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Scroll Tracking: Progress Bar + Go To Top Button
+    window.addEventListener('scroll', () => {
+      const progressBar = document.getElementById('scroll-progress-bar');
+      if (progressBar) {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        const current = window.scrollY;
+        const progress = total > 0 ? (current / total) * 100 : 0;
+        progressBar.style.width = `${progress}%`;
+      }
+
+      const btn = document.getElementById('go-to-top-btn');
+      if (btn) {
+        if (window.scrollY > 260) {
+          btn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+          btn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+        } else {
+          btn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+          btn.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+        }
+      }
+    }, { passive: true });
+
+    // Apple-Grade IntersectionObserver Scroll Reveals
+    function initScrollReveals() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal-on-scroll, .reveal-scale').forEach((el) => {
+        observer.observe(el);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveals);
+    } else {
+      initScrollReveals();
+    }
+
     // Theme Switcher Logic
     function initTheme() {
       const saved = localStorage.getItem('stitch_theme');
@@ -1344,19 +1736,20 @@
     };
 
     function switchPillarTab(num) {
+      const activeClass = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer bg-black dark:bg-emerald-500 text-white dark:text-black shadow-md scale-[1.01]";
+      const inactiveClass = "flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-3.5 px-2 sm:px-4 rounded-xl sm:rounded-full text-[11px] sm:text-xs font-bold tracking-tight transition-all cursor-pointer text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white hover:bg-white/60 dark:hover:bg-neutral-800/50";
+
       [1, 2, 3].forEach(n => {
         const tab = document.getElementById(`pillar-tab-${n}`);
-        if (n === num) {
-          tab.className = "px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 bg-black dark:bg-emerald-500 text-white dark:text-black scale-[1.02]";
-        } else {
-          tab.className = "px-4 sm:px-6 py-3 rounded-full text-xs font-bold tracking-tight transition-all cursor-pointer whitespace-nowrap shadow-xs flex items-center gap-2 bg-white/80 dark:bg-[#15181e] text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white border border-neutral-200 dark:border-neutral-800";
+        if (tab) {
+          tab.className = n === num ? activeClass : inactiveClass;
         }
       });
 
       const cards = PILLARS_DATA[num];
       const container = document.getElementById('pillar-cards-container');
-      container.innerHTML = cards.map(c => `
-        <div class="p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-[#121418]/70 border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs flex flex-col justify-between hover:shadow-lg dark:hover:border-neutral-700 transition-all duration-300 group">
+      container.innerHTML = cards.map((c, idx) => `
+        <div class="card-hover-effect p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-[#121418]/70 border border-neutral-200/80 dark:border-neutral-800/80 backdrop-blur-xl shadow-xs flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
               <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">

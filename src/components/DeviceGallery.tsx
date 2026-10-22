@@ -79,7 +79,7 @@ export const DeviceGallery: React.FC<{ onOpenModal: () => void }> = ({ onOpenMod
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
+        <div className="reveal-on-scroll flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
           <div>
             <div className="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -95,7 +95,7 @@ export const DeviceGallery: React.FC<{ onOpenModal: () => void }> = ({ onOpenMod
         </div>
 
         {/* Minimal Pill Filters */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 sm:mb-10 no-scrollbar">
+        <div className="reveal-on-scroll delay-100 flex items-center gap-2 overflow-x-auto pb-4 mb-8 sm:mb-10 no-scrollbar">
           <button 
             onClick={() => setFilter('all')}
             className={`px-4 py-2 rounded-full text-xs font-semibold tracking-tight transition-all cursor-pointer whitespace-nowrap ${
@@ -123,10 +123,10 @@ export const DeviceGallery: React.FC<{ onOpenModal: () => void }> = ({ onOpenMod
 
         {/* Device Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {filteredDevices.map(device => (
+          {filteredDevices.map((device, idx) => (
             <div 
               key={device.id} 
-              className="group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between hover:shadow-xl dark:hover:shadow-2xl dark:hover:border-neutral-700 transition-all duration-300"
+              className={`reveal-scale ${idx % 3 === 1 ? 'delay-150' : idx % 3 === 2 ? 'delay-300' : ''} card-hover-effect group rounded-3xl bg-neutral-50 dark:bg-[#151518] border border-neutral-200/80 dark:border-neutral-800 overflow-hidden flex flex-col justify-between`}
             >
               {/* Image Container */}
               <div className="w-full aspect-[16/11] overflow-hidden bg-neutral-900 relative">

@@ -51,7 +51,7 @@ export const FaqSection: React.FC = () => {
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
-        <div className="mb-10 sm:mb-14 text-center max-w-2xl mx-auto">
+        <div className="reveal-on-scroll mb-10 sm:mb-14 text-center max-w-2xl mx-auto">
           <div className="text-[11px] font-mono-telemetry uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-bold mb-2">
             FREQUENTLY ASKED QUESTIONS
           </div>
@@ -62,7 +62,7 @@ export const FaqSection: React.FC = () => {
         </div>
 
         {/* FAQ Accordion List */}
-        <div className="max-w-3xl mx-auto flex flex-col gap-3.5">
+        <div className="reveal-on-scroll delay-150 max-w-3xl mx-auto flex flex-col gap-3.5">
           {FAQS.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
