@@ -17,8 +17,8 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
     address: '',
     dualScreen: true,
     biopticScale: true,
-    handheldPda: true,
-    eslKit: true
+    handheldPda: false,
+    eslKit: false
   });
 
   if (!isOpen) return null;
@@ -36,13 +36,13 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
         <div className="flex items-start justify-between gap-4">
           <div>
             <span className="inline-block px-3 py-1 rounded-full bg-neutral-900 dark:bg-neutral-800 text-emerald-400 text-[10px] font-mono-telemetry uppercase tracking-wider mb-2">
-              12 Free Packages Remaining
+              Hardware Inquiry
             </span>
             <h3 className="text-2xl sm:text-3xl font-black text-black dark:text-white tracking-tight uppercase">
-              Get Free Hardware
+              Request Hardware
             </h3>
             <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 font-medium mt-1">
-              Zero upfront equipment cost. Delivered, plugged in, and calibrated in your store for free.
+              Free register equipment with optional paid add-ons. Contact us for add-on pricing.
             </p>
           </div>
           <button 
@@ -155,6 +155,11 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                 />
                 <span>Fast Scanner Scale</span>
               </label>
+            </div>
+            <span className="pt-2 border-t border-neutral-200 dark:border-neutral-700 text-[10px] font-mono-telemetry font-bold text-neutral-500 dark:text-neutral-400 uppercase">
+              Optional Paid Add-Ons (Pricing on Request):
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 font-medium text-neutral-800 dark:text-neutral-200 text-xs">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input 
                   type="checkbox" 
@@ -171,14 +176,14 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
                   onChange={e => setFormData({ ...formData, eslKit: e.target.checked })}
                   className="rounded text-emerald-600 focus:ring-emerald-500 w-4 h-4" 
                 />
-                <span>Digital Shelf Price Tags</span>
+                <span>Digital Price Tags</span>
               </label>
             </div>
           </div>
 
           {submitted && (
             <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-700 text-xs text-emerald-950 dark:text-emerald-200 font-medium">
-              &check; Request received! A scale technician will call you within 15 minutes to schedule your free setup.
+              &check; Equipment options selected. Contact our team to confirm availability and pricing.
             </div>
           )}
 
@@ -186,7 +191,7 @@ export const LeadModal: React.FC<LeadModalProps> = ({ isOpen, onClose }) => {
             type="submit" 
             className="w-full py-3.5 sm:py-4 rounded-full bg-black dark:bg-emerald-500 text-white dark:text-black text-xs sm:text-sm font-black uppercase tracking-wider hover:bg-neutral-800 dark:hover:bg-emerald-400 transition-all cursor-pointer shadow-lg mt-1"
           >
-            Claim 100% Free Equipment &rarr;
+            Submit Request &rarr;
           </button>
         </form>
 
