@@ -47,11 +47,11 @@ export default function App() {
 
       <main className="w-full">
         {path === "/privacy-policy" ? (
-          <div className="bg-white text-[#0f0f0f]"><LegalPage doc={PRIVACY} /></div>
+          <LegalPage doc={PRIVACY} />
         ) : path === "/terms-of-service" ? (
-          <div className="bg-white text-[#0f0f0f]"><LegalPage doc={TERMS} /></div>
+          <LegalPage doc={TERMS} />
         ) : path === "/contact" ? (
-          <div className="bg-white text-[#0f0f0f]"><ContactPage /></div>
+          <ContactPage />
         ) : (
           <>
             <Hero onBookDemo={openBookDemo} />
@@ -65,7 +65,7 @@ export default function App() {
         )}
       </main>
 
-      <Footer onBookDemo={openBookDemo} />
+      <Footer onBookDemo={openBookDemo} compact={path === "/privacy-policy" || path === "/terms-of-service" || path === "/contact"} />
 
       <BookDemoModal
         isOpen={demoModalOpen}

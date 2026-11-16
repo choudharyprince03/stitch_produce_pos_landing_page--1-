@@ -3,8 +3,9 @@ import { ArrowRight } from "lucide-react";
 import { MEDIA, STAND_IN } from "../../media";
 import { VoriLogo } from "../vori/VoriLogo";
 
-export const Footer: React.FC<{ onBookDemo: (c?: string) => void }> = ({ onBookDemo }) => (
+export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: boolean }> = ({ onBookDemo, compact }) => (
   <footer id="grant" className="relative bg-ink text-white overflow-hidden">
+    {!compact && (
     <div className="absolute inset-0">
       <img
         src={MEDIA.storeLane ?? STAND_IN.storeLane}
@@ -15,8 +16,10 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void }> = ({ onBookD
       <div className="absolute inset-0 ground-grid opacity-60" />
       <div className="glow-neon absolute left-1/2 -translate-x-1/2 top-[-20%] w-[80vw] max-w-[1100px] aspect-square" />
     </div>
+    )}
 
-    <div className="relative max-w-[80rem] mx-auto px-5 sm:px-10 pt-36 sm:pt-56 pb-10">
+    <div className={`relative max-w-[80rem] mx-auto px-5 sm:px-10 pb-10 ${compact ? "pt-16" : "pt-36 sm:pt-56"}`}>
+      {!compact && (<>
       <h2 className="h-display text-[clamp(44px,9vw,136px)] !leading-[0.98] text-balance">
         Fresh start.{" "}
         <br className="hidden sm:block" />
@@ -40,7 +43,9 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void }> = ({ onBookD
         </a>
       </div>
 
-      <div className="mt-32 sm:mt-48 pt-10 border-t border-white/12 grid grid-cols-1 md:grid-cols-12 gap-8 text-[14.5px] text-white/55">
+      </>)}
+
+      <div className={`${compact ? "" : "mt-32 sm:mt-48 border-t border-white/12"} pt-10 grid grid-cols-1 md:grid-cols-12 gap-8 text-[14.5px] text-white/55`}>
         <div className="md:col-span-4">
           <VoriLogo theme="dark" size="nav" />
         </div>

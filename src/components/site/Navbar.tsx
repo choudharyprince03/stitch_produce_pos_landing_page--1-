@@ -44,8 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
     <>
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 border-b ${
-          scrolled || open
-            ? "bg-ink/80 backdrop-blur-xl border-white/[0.08]"
+          scrolled || open || !home
+            ? "bg-ink/90 backdrop-blur-xl border-white/[0.08]"
             : "bg-transparent border-transparent"
         }`}
       >
