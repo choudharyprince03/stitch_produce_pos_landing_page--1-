@@ -1,5 +1,7 @@
 import type React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
@@ -98,3 +100,73 @@ export const spotMove = (e: React.MouseEvent<HTMLElement>) => {
   e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
   e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
 };
+
+
+/**
+ * Three authored entrances, one ease: headings rise out of a clip,
+ * cards lift in with a soft blur, photos open from an inset frame.
+ * Content is visible until JS runs, and nothing runs under reduced motion.
+ */
+export function useReveal(enabled: boolean) {
+  useLayoutEffect(() => {
+    if (!enabled || prefersReducedMotion()) return;
+    gsap.registerPlugin(ScrollTrigger);
+    const ease = "expo.out";
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray<HTMLElement>("[data-reveal='head']").forEach((el) => {
+        gsap.set(el, { clipPath: "inset(0 0 100% 0)", y: 34 });
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 90%",
+          once: true,
+          onEnter: () =>
+            gsap.to(el, {
+              clipPath: "inset(-12% -3% -30% -3%)",
+              y: 0,
+              duration: 1.15,
+              ease,
+              clearProps: "clipPath,transform",
+            }),
+        });
+      });
+
+      gsap.set("[data-reveal='rise']", { opacity: 0, y: 44, filter: "blur(8px)" });
+      ScrollTrigger.batch("[data-reveal='rise']", {
+        start: "top 92%",
+        once: true,
+        onEnter: (els) =>
+          gsap.to(els, {
+            opacity: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 1.05,
+            ease,
+            stagger: 0.09,
+            overwrite: true,
+            clearProps: "transform,filter",
+          }),
+      });
+
+      gsap.utils.toArray<HTMLElement>("[data-reveal='media']").forEach((el) => {
+        const img = el.querySelector("img");
+        gsap.set(el, { clipPath: "inset(12% 12% 12% 12% round 24px)" });
+        if (img) gsap.set(img, { scale: 1.16 });
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 90%",
+          once: true,
+          onEnter: () => {
+            gsap.to(el, { clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 1.2, ease, clearProps: "clipPath" });
+            if (img) gsap.to(img, { scale: 1, duration: 1.5, ease, clearProps: "transform" });
+          },
+        });
+      });
+    });
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    return () => {
+      window.removeEventListener("load", refresh);
+      ctx.revert();
+    };
+  }, [enabled]);
+}

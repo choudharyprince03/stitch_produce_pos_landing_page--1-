@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { MEDIA } from "../../media";
 import { DeviceFrame, PosScreen, ScaledScreen } from "./screens";
 import { prefersReducedMotion } from "./hooks";
+import { HeroMotion } from "./motion";
 
 interface HeroProps {
   onBookDemo: (context?: string) => void;
@@ -58,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
       <div className="absolute inset-0 ground-grid pointer-events-none" />
       <div
         data-hero="glow"
-        className="glow-neon absolute right-[-10%] top-[8%] w-[70vw] max-w-[1000px] aspect-square pointer-events-none"
+        className="glow-neon glow-drift absolute right-[-10%] top-[8%] w-[70vw] max-w-[1000px] aspect-square pointer-events-none"
       />
 
       <div className="relative z-10 w-full max-w-[80rem] mx-auto px-5 sm:px-10 pt-32 pb-20 lg:pt-36 lg:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center">
@@ -104,11 +105,25 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
 
         <div className="lg:col-span-7 lg:-mr-4 xl:-mr-8" data-hero="device">
           {MEDIA.heroHardware ? (
+            <div className="relative">
             <img
               src={MEDIA.heroHardware}
-              alt="Produce Ai POS terminal, scale and receipt printer"
-              className="w-full h-auto drop-shadow-[0_40px_80px_rgba(0,0,0,0.7)]"
+              alt="Produce Ai POS: touchscreen on an arm, scanner scale and receipt printer"
+              width={1600}
+              height={1487}
+              fetchPriority="high"
+              className="w-full h-auto"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to right,transparent,#000 7%,#000 86%,transparent),linear-gradient(to bottom,transparent,#000 3%,#000 84%,transparent)",
+                WebkitMaskComposite: "source-in",
+                maskImage:
+                  "linear-gradient(to right,transparent,#000 7%,#000 86%,transparent),linear-gradient(to bottom,transparent,#000 3%,#000 84%,transparent)",
+                maskComposite: "intersect",
+              }}
             />
+            <HeroMotion />
+            </div>
           ) : (
             <div className="float-y">
               <DeviceFrame stand>

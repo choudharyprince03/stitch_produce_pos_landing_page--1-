@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import { MEDIA, STAND_IN } from "../../media";
 import { VoriLogo } from "../vori/VoriLogo";
+import { ScanBars } from "./motion";
 
 export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: boolean }> = ({ onBookDemo, compact }) => (
   <footer id="grant" className="relative bg-ink text-white overflow-hidden">
@@ -14,13 +15,14 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: bool
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/70 to-ink" />
       <div className="absolute inset-0 ground-grid opacity-60" />
-      <div className="glow-neon absolute left-1/2 -translate-x-1/2 top-[-20%] w-[80vw] max-w-[1100px] aspect-square" />
+      <div className="glow-neon glow-drift absolute left-1/2 -translate-x-1/2 top-[-20%] w-[80vw] max-w-[1100px] aspect-square" />
     </div>
     )}
 
     <div className={`relative max-w-[80rem] mx-auto px-5 sm:px-10 pb-10 ${compact ? "pt-16" : "pt-36 sm:pt-56"}`}>
       {!compact && (<>
-      <h2 className="h-display text-[clamp(44px,9vw,136px)] !leading-[0.98] text-balance">
+      <ScanBars className="hidden lg:block absolute right-10 top-44 opacity-80" />
+      <h2 data-reveal="head" className="h-display text-[clamp(44px,9vw,136px)] !leading-[0.98] text-balance">
         Fresh start.{" "}
         <br className="hidden sm:block" />
         <span className="serif-accent text-neon" style={{ fontSize: "1.04em" }}>
@@ -38,7 +40,7 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: bool
         >
           Get free hardware <ArrowRight className="w-5 h-5 arrow" />
         </button>
-        <a href="tel:3472130687" className="link-draw text-[17px] text-white/85 tabular-nums self-start sm:self-auto">
+        <a href="tel:3472130687" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] text-[17px] text-white/85 tabular-nums self-start sm:self-auto">
           (347) 213-0687
         </a>
       </div>
@@ -50,23 +52,23 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: bool
           <VoriLogo theme="dark" size="nav" />
         </div>
         <div className="md:col-span-8 space-y-1.5 leading-[1.6]">
-          <a href="mailto:support@produceai.co" className="link-draw hover:text-white transition-colors">
+          <a href="mailto:support@produceai.co" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">
             support@produceai.co
           </a>
           <p>3508 White Plains Rd, Bronx, NY</p>
         </div>
       </div>
 
-      <p className="mt-12 text-[12.5px] leading-relaxed max-w-3xl text-white/40">
+      <p className="mt-12 text-[13px] leading-relaxed max-w-3xl text-white/60">
         Free hardware is for qualified grocery and produce store owners. Extras are sold separately.
       </p>
 
-      <div className="mt-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-white/40">
+      <div className="mt-12 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[13px] text-white/60">
         <span>© 2026 Produce AI POS Inc. All rights reserved.</span>
-        <div className="flex gap-6">
-          <a href="/privacy-policy" className="link-draw hover:text-white transition-colors">Privacy Policy</a>
-          <a href="/terms-of-service" className="link-draw hover:text-white transition-colors">Terms of Service</a>
-          <a href="/contact" className="link-draw hover:text-white transition-colors">Contact Us</a>
+        <div className="flex flex-wrap gap-x-6">
+          <a href="/privacy-policy" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Privacy Policy</a>
+          <a href="/terms-of-service" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Terms of Service</a>
+          <a href="/contact" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Contact Us</a>
         </div>
       </div>
     </div>

@@ -13,19 +13,20 @@ export const Specs: React.FC = () => (
   <section id="specs" className="relative bg-ink text-white py-32 sm:py-48 border-t border-white/10">
     <div className="max-w-[80rem] mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
       <div className="lg:col-span-4">
-        <h2 className="h-display text-[38px] sm:text-[54px] !leading-[1.04] lg:sticky lg:top-32">
-          Specs, <span className="serif-accent text-neon" style={{ fontSize: "1.06em" }}>short.</span>
+        <h2 data-reveal="head" className="h-display h-section !leading-[1.04] lg:sticky lg:top-32">
+          Specs, short.
         </h2>
       </div>
       <dl className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {SPECS.map(([l, v], i) => (
+        {SPECS.map(([l, v]) => (
           <div
             key={l}
+            data-reveal="rise"
             onMouseMove={spotMove}
             className="spot card-lift rounded-3xl border border-white/10 bg-panel p-7 sm:p-9 hover:border-white/25"
           >
             <dt className="eyebrow text-neon">
-              {String(i + 1).padStart(2, "0")} · {l}
+              {l}
             </dt>
             <dd className="mt-6 text-[20px] leading-[1.45] text-white/85">{v}</dd>
           </div>
@@ -57,12 +58,12 @@ const FAQ = [
 export const Faq: React.FC<{ onBookDemo: (c?: string) => void }> = ({ onBookDemo }) => {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="bg-paper text-ink py-32 sm:py-48">
+    <section id="faq" className="paper-ground seam-in seam-out text-ink py-32 sm:py-48">
       <div className="max-w-[80rem] mx-auto px-5 sm:px-10 grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-32">
-            <h2 className="h-display text-[38px] sm:text-[54px] !leading-[1.04]">
-              Common <span className="serif-accent text-[#14a50f]" style={{ fontSize: "1.06em" }}>questions</span>
+            <h2 data-reveal="head" className="h-display h-section !leading-[1.04]">
+              Common questions
             </h2>
             <p className="mt-5 text-[16px] text-ink/60">
               Something else?{" "}

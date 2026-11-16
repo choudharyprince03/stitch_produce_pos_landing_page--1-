@@ -17,11 +17,11 @@ const CHAPTERS = [
     Screen: KeysScreen,
   },
   {
-    key: "invoice" as const,
+    key: "payment" as const,
     n: "02",
-    title: "Pricebook",
-    lead: "Know your costs and protect your margin.",
-    points: ["AI reads paper vendor invoices", "Margin rules on every price", "Shelf tags update wirelessly"],
+    title: "Checkout",
+    lead: "EBT, WIC, card and cash. One tap each.",
+    points: ["EBT, WIC and OTC split in one tap", "Cash change and exact tender", "Loyalty points at the register"],
     Screen: InvoiceScreen,
   },
   {
@@ -58,7 +58,7 @@ export const Story: React.FC = () => {
       ScrollTrigger.create({
         trigger: ".story-pin",
         start: "top top",
-        end: "+=240%",
+        end: "+=200%",
         pin: true,
         scrub: true,
         onUpdate: (self) => {
@@ -72,17 +72,14 @@ export const Story: React.FC = () => {
   }, [desktop]);
 
   const heading = (
-    <h2 className="h-display text-[38px] sm:text-[54px] xl:text-[60px] max-w-[34rem] text-balance !leading-[1.04]">
-      Three screens,{" "}
-      <span className="serif-accent text-[#14a50f]" style={{ fontSize: "1.06em" }}>
-        one system.
-      </span>
+    <h2 data-reveal="head" className="h-display h-section max-w-[34rem] text-balance !leading-[1.04]">
+      Three screens, one system.
     </h2>
   );
 
   if (!desktop) {
     return (
-      <section id="system" className="bg-paper text-ink py-28 sm:py-40">
+      <section id="system" className="paper-ground seam-in seam-out text-ink py-28 sm:py-40">
         <div className="max-w-[80rem] mx-auto px-5 sm:px-10">
           {heading}
           <div className="mt-20 space-y-28">
@@ -91,8 +88,7 @@ export const Story: React.FC = () => {
                 <DeviceFrame>
                   <ScreenOrImage c={c} />
                 </DeviceFrame>
-                <div className="mt-7 flex items-baseline gap-3">
-                  <span className="eyebrow text-[#14a50f]">{c.n}</span>
+                <div className="mt-7">
                   <h3 className="text-[26px] font-extrabold tracking-tight">{c.title}</h3>
                 </div>
                 <p className="mt-2 text-[18px] text-ink/60">{c.lead}</p>
@@ -105,7 +101,7 @@ export const Story: React.FC = () => {
   }
 
   return (
-    <section id="system" ref={root} className="bg-paper text-ink">
+    <section id="system" ref={root} className="paper-ground seam-in seam-out text-ink">
       <div className="story-pin min-h-screen flex items-center relative overflow-hidden">
         <div className="absolute inset-0 ground-grid-light opacity-60 pointer-events-none" />
         <div className="relative w-full max-w-[80rem] mx-auto px-10 pt-28 pb-14 grid grid-cols-12 gap-16 items-center">
@@ -119,12 +115,9 @@ export const Story: React.FC = () => {
                 return (
                   <div key={c.key} className="py-3.5">
                     <div className="flex items-baseline gap-3">
-                      <span className={`eyebrow transition-colors duration-300 ${on ? "text-[#14a50f]" : "text-ink/35"}`}>
-                        {c.n}
-                      </span>
                       <h3
                         className={`text-[24px] font-extrabold tracking-tight transition-colors duration-300 ${
-                          on ? "text-ink" : "text-ink/35"
+                          on ? "text-ink" : "text-ink/55"
                         }`}
                       >
                         {c.title}
@@ -149,13 +142,15 @@ export const Story: React.FC = () => {
             <div className="absolute -inset-10 bg-[radial-gradient(closest-side,rgba(49,227,39,0.22),transparent_70%)] pointer-events-none" />
             <DeviceFrame className="relative">
               <div className="relative aspect-[900/560]">
+                <span key={active} aria-hidden className="glint z-10" />
                 {CHAPTERS.map((c, i) => (
                   <div
                     key={c.key}
-                    className="absolute inset-0 transition-all duration-700 ease-out"
+                    className="absolute inset-0 transition-[opacity,transform,filter] duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{
                       opacity: i === active ? 1 : 0,
-                      transform: i === active ? "none" : `translateY(${i < active ? "-3%" : "3%"}) scale(.98)`,
+                      filter: i === active ? "blur(0px)" : "blur(6px)",
+                      transform: i === active ? "none" : `translateY(${i < active ? "-4%" : "4%"}) scale(.97)`,
                       pointerEvents: i === active ? "auto" : "none",
                     }}
                     aria-hidden={i !== active}

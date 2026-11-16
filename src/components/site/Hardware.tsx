@@ -1,4 +1,5 @@
 import React, { useLayoutEffect, useRef } from "react";
+import { DrawLine } from "./motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight } from "lucide-react";
@@ -45,24 +46,22 @@ export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
   }, []);
 
   return (
-    <section id="hardware" className="bg-paper text-ink pt-32 sm:pt-48 pb-32 sm:pb-48 overflow-hidden">
+    <section id="hardware" className="paper-ground seam-in seam-out text-ink pt-32 sm:pt-48 pb-32 sm:pb-48 overflow-hidden">
       <div className="max-w-[80rem] mx-auto px-5 sm:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
-          <h2 className="lg:col-span-7 h-display text-[38px] sm:text-[54px] xl:text-[60px] text-balance !leading-[1.04]">
-            Free hardware{" "}
-            <span className="serif-accent text-[#14a50f]" style={{ fontSize: "1.06em" }}>
-              to start.
-            </span>
+          <h2 data-reveal="head" className="lg:col-span-7 h-display h-section text-balance !leading-[1.04]">
+            Free hardware to start.
           </h2>
-          <p className="lg:col-span-4 lg:col-start-9 text-[18px] leading-[1.55] text-ink/55">
+          <p className="lg:col-span-4 lg:col-start-9 text-[18px] leading-[1.55] text-ink/70">
             Installed at your counter. $0 upfront.
           </p>
         </div>
 
-        <div className="mt-20 sm:mt-28 grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-8">
+        <DrawLine tone="dark" className="mt-14" />
+        <div className="mt-14 sm:mt-20 grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-8">
           {FREE.map((h) => (
             <article key={h.k} className="group card-lift">
-              <div className="zoom-frame relative rounded-[24px] bg-ink aspect-[4/3.1]">
+              <div data-reveal="media" className="zoom-frame relative rounded-[24px] bg-ink aspect-[4/3.1]">
                 <img src={photo(h.k)} alt={h.title} loading="lazy" className="slot-img" />
                 <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-neon text-ink text-[12.5px] font-bold px-3.5 py-1.5">
                   $0 · included
@@ -109,7 +108,7 @@ export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
         </div>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {OPTIONAL.map((o) => (
-            <article key={o.k} className="group card-lift flex sm:flex-col gap-5 rounded-[24px] bg-white p-3 pr-5 sm:p-3 border border-ink/[0.07] hover:shadow-[0_24px_50px_-24px_rgba(7,8,10,0.35)]">
+            <article key={o.k} data-reveal="rise" className="group card-lift flex sm:flex-col gap-5 rounded-[24px] bg-white p-3 pr-5 sm:p-3 border border-ink/[0.07] hover:shadow-[0_24px_50px_-24px_rgba(7,8,10,0.35)]">
               <div className="zoom-frame rounded-[16px] bg-ink w-[38%] sm:w-full shrink-0 aspect-[4/3]">
                 <img src={photo(o.k)} alt={o.title} loading="lazy" className="slot-img" />
               </div>

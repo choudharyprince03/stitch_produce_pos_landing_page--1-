@@ -1,4 +1,5 @@
 import React from "react";
+import { DrawLine } from "./motion";
 import { Check, WifiOff, Wifi } from "lucide-react";
 import { spotMove, useInView, useLoopStep, useTween, usd } from "./hooks";
 
@@ -151,17 +152,16 @@ export const Features: React.FC = () => (
   <section id="features" className="relative bg-ink text-white py-32 sm:py-48 overflow-hidden">
     <div className="absolute inset-0 ground-grid opacity-50 pointer-events-none" />
     <div className="relative max-w-[80rem] mx-auto px-5 sm:px-10">
-      <h2 className="h-display text-[38px] sm:text-[54px] xl:text-[60px] max-w-[40rem] text-balance !leading-[1.04]">
-        Made for the{" "}
-        <span className="serif-accent text-neon" style={{ fontSize: "1.06em" }}>
-          produce counter.
-        </span>
+      <h2 data-reveal="head" className="h-display h-section max-w-[40rem] text-balance !leading-[1.04]">
+        Made for the produce counter.
       </h2>
 
-      <div className="mt-20 sm:mt-28 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+      <DrawLine className="mt-14" />
+      <div className="mt-14 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
         {CARDS.map((c) => (
           <article
             key={c.title}
+            data-reveal="rise"
             onMouseMove={spotMove}
             className={`spot card-lift rounded-[28px] border border-white/10 bg-panel p-5 sm:p-8 flex flex-col hover:border-white/25`}
           >

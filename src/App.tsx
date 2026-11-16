@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Phone } from "lucide-react";
 import { Navbar } from "./components/site/Navbar";
 import { Hero, Marquee } from "./components/site/Hero";
 import { Story } from "./components/site/Story";
@@ -10,11 +11,13 @@ import { BookDemoModal } from "./components/vori/BookDemoModal";
 import { LegalPage } from "./components/vori/LegalPage";
 import { ContactPage } from "./components/vori/ContactPage";
 import { PRIVACY, TERMS } from "./components/vori/legalContent";
+import { useReveal } from "./components/site/hooks";
 
 export default function App() {
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [demoContext, setDemoContext] = useState<string | undefined>(undefined);
+  useReveal(path === "/");
 
   const openBookDemo = (context?: string) => {
     setDemoContext(context);
@@ -42,7 +45,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-ink text-white font-sans antialiased selection:bg-neon selection:text-ink">
+    <div className={`w-full min-h-screen bg-ink text-white font-sans antialiased selection:bg-neon selection:text-ink ${path === "/" ? "pb-[88px] sm:pb-0" : ""}`}>
       <Navbar onBookDemo={openBookDemo} />
 
       <main className="w-full">
@@ -66,6 +69,25 @@ export default function App() {
       </main>
 
       <Footer onBookDemo={openBookDemo} compact={path === "/privacy-policy" || path === "/terms-of-service" || path === "/contact"} />
+
+      {path === "/" && !demoModalOpen && (
+        <div className="sm:hidden fixed inset-x-0 bottom-0 z-40 flex gap-3 border-t border-white/10 bg-ink px-4 pt-3 pb-[max(12px,env(safe-area-inset-bottom))]">
+          <button
+            type="button"
+            onClick={() => openBookDemo("Mobile bar — Get free hardware")}
+            className="btn btn-neon h-14 flex-1 text-[16px]"
+          >
+            Get free hardware
+          </button>
+          <a
+            href="tel:3472130687"
+            aria-label="Call (347) 213-0687"
+            className="btn btn-ghost h-14 w-14 shrink-0 !px-0"
+          >
+            <Phone className="w-5 h-5" />
+          </a>
+        </div>
+      )}
 
       <BookDemoModal
         isOpen={demoModalOpen}

@@ -14,22 +14,22 @@
  */
 export const MEDIA = {
   /** Hero: the whole POS (terminal, scale, printer). Replaces the live demo screen frame. */
-  heroHardware: null as string | null,
+  heroHardware: "/images/slots/hero.jpg" as string | null,
 
   /** Real POS screen captures. Each replaces the built-in live screen in the "three screens" section. */
   screens: {
-    checkout: null as string | null,
-    invoice: null as string | null,
-    backoffice: null as string | null,
+    checkout: "/images/slots/checkout.jpg" as string | null,
+    payment: "/images/slots/payment.jpg" as string | null,
+    backoffice: "/images/slots/backoffice.jpg" as string | null,
   },
 
   /** Free hardware kit + optional add-ons. Stand-in photos are used until you set these. */
   hardware: {
-    scale: null as string | null,
-    printer: null as string | null,
-    drawer: null as string | null,
-    customerDisplay: null as string | null,
-    handheld: null as string | null,
+    scale: "/images/slots/scale.jpg" as string | null,
+    printer: "/images/slots/printer.jpg" as string | null,
+    drawer: "/images/slots/drawer.jpg" as string | null,
+    customerDisplay: "/images/slots/customer-display.jpg" as string | null,
+    handheld: "/images/slots/handheld.jpg" as string | null,
     shelfTags: null as string | null,
   },
 
