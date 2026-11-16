@@ -26,7 +26,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
   if (submitted) {
     return (
           <div className="py-6 text-center">
-        <div className="w-14 h-14 rounded-full bg-[#ecfdf5] text-[#10b981] flex items-center justify-center mx-auto mb-4">
+        <div className="w-14 h-14 rounded-full bg-[#ecfdf5] text-[#14a50f] flex items-center justify-center mx-auto mb-4">
           <CheckCircle2 className="w-7 h-7" />
         </div>
         <h3 className="font-sans font-extrabold text-[25px] text-[#0f0f0f]">
@@ -75,7 +75,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Marcus Sterling"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#10b981] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#14a50f] focus:outline-none text-[15px]"
             />
           </div>
           <div>
@@ -88,7 +88,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={storeName}
               onChange={(e) => setStoreName(e.target.value)}
               placeholder="Bronx Fresh Produce Market"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#10b981] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#14a50f] focus:outline-none text-[15px]"
             />
           </div>
         </div>
@@ -104,7 +104,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="marcus@store.com"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#10b981] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#14a50f] focus:outline-none text-[15px]"
             />
           </div>
           <div>
@@ -117,7 +117,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="(347) 555-0192"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#10b981] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#14a50f] focus:outline-none text-[15px]"
             />
           </div>
         </div>
@@ -130,7 +130,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
             <select
               value={lanes}
               onChange={(e) => setLanes(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#10b981] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#14a50f] focus:outline-none text-[15px]"
             >
               <option value="1 to 2 Registers">1 to 2 Registers</option>
               <option value="3 to 5 Registers">3 to 5 Registers</option>
@@ -147,7 +147,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Bronx, NY 10458"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#10b981] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#e0e0e0] focus:border-[#14a50f] focus:outline-none text-[15px]"
             />
           </div>
         </div>
@@ -163,7 +163,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
                 type="checkbox"
                 checked={addHandheld}
                 onChange={(e) => setAddHandheld(e.target.checked)}
-                className="rounded accent-[#10b981] w-4 h-4"
+                className="rounded accent-[#14a50f] w-4 h-4"
               />
               <span>Handheld Store Scanner</span>
             </label>
@@ -172,7 +172,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
                 type="checkbox"
                 checked={addEsl}
                 onChange={(e) => setAddEsl(e.target.checked)}
-                className="rounded accent-[#10b981] w-4 h-4"
+                className="rounded accent-[#14a50f] w-4 h-4"
               />
               <span>Digital Shelf Price Tags (ESL)</span>
             </label>
@@ -181,7 +181,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
                 type="checkbox"
                 checked={addDualDisplay}
                 onChange={(e) => setAddDualDisplay(e.target.checked)}
-                className="rounded accent-[#10b981] w-4 h-4"
+                className="rounded accent-[#14a50f] w-4 h-4"
               />
               <span>Dual Customer Display &amp; Smart PIN Pad</span>
             </label>
@@ -190,13 +190,13 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
 
         <button
           type="submit"
-          className="w-full py-4 rounded-full bg-[#10b981] hover:bg-[#059669] active:scale-[0.99] text-white text-[16px] font-semibold transition-all mt-2"
+          className="w-full py-4 rounded-full bg-[#31e327] hover:bg-[#25c91d] active:scale-[0.99] text-[#07080a] text-[16px] font-semibold transition-all mt-2"
         >
           Send request
         </button>
 
         <div className="pt-1 flex items-center justify-center gap-2 text-[14px] text-[#666666]">
-          <PhoneCall className="w-3.5 h-3.5 text-[#10b981]" />
+          <PhoneCall className="w-3.5 h-3.5 text-[#14a50f]" />
           <span>
             Questions? Call{" "}
             <a

@@ -12,7 +12,7 @@ export const ContactPage: React.FC = () => (
   <section className="bg-white pt-36 sm:pt-44 pb-32 sm:pb-44">
     <div className="max-w-[80rem] mx-auto px-6 sm:px-10">
       <h1 className="font-sans font-extrabold text-[40px] sm:text-[64px] leading-[1.05] tracking-[-0.03em] max-w-[44rem] text-balance">
-        Get in touch. <span className="text-[#059669]">We’re here to help.</span>
+        Get in touch. <span className="text-[#14a50f]">We’re here to help.</span>
       </h1>
       <p className="mt-6 text-[19px] leading-[1.6] text-[#555555] max-w-[36rem]">
         Tell us about your store and a specialist will get back to you to set

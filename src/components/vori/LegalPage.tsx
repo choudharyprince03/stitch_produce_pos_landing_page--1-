@@ -27,7 +27,7 @@ export const LegalPage: React.FC<{ doc: LegalDoc }> = ({ doc }) => (
                   typeof b === "string" ? (
                     <p key={i}>{b}</p>
                   ) : (
-                    <ul key={i} className="list-disc pl-5 space-y-2.5 marker:text-[#10b981]">
+                    <ul key={i} className="list-disc pl-5 space-y-2.5 marker:text-[#14a50f]">
                       {b.map((li) => (
                         <li key={li}>{li}</li>
                       ))}
@@ -46,7 +46,7 @@ export const LegalPage: React.FC<{ doc: LegalDoc }> = ({ doc }) => (
               <p>Produce AI POS Inc., 3508 White Plains Rd, Bronx, NY, USA</p>
               <p>
                 Email:{" "}
-                <a href="mailto:support@produceai.co" className="link-draw text-[#059669] font-medium">
+                <a href="mailto:support@produceai.co" className="link-draw text-[#14a50f] font-medium">
                   support@produceai.co
                 </a>
               </p>
