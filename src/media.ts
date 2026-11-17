@@ -16,6 +16,9 @@ export const MEDIA = {
   /** Hero: the whole POS (terminal, scale, printer). Replaces the live demo screen frame. */
   heroHardware: null as string | null, // was "/images/slots/hero.jpg"; null shows the live animated POS screen
 
+  /** Hero: animated screen recording shown inside the device frame (used when heroHardware is null). */
+  heroScreen: "/images/slots/hero-screen.gif" as string | null,
+
   /** Real POS screen captures. Each replaces the built-in live screen in the "three screens" section. */
   screens: {
     checkout: "/images/slots/checkout.jpg" as string | null,

@@ -125,9 +125,20 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
           ) : (
             <div className="float-y">
               <DeviceFrame stand>
-                <ScaledScreen>
-                  <PosScreen />
-                </ScaledScreen>
+                {MEDIA.heroScreen ? (
+                  <img
+                    src={MEDIA.heroScreen}
+                    alt="Produce Ai POS register screen"
+                    width={960}
+                    height={586}
+                    fetchPriority="high"
+                    className="block w-full h-auto"
+                  />
+                ) : (
+                  <ScaledScreen>
+                    <PosScreen />
+                  </ScaledScreen>
+                )}
               </DeviceFrame>
             </div>
           )}
