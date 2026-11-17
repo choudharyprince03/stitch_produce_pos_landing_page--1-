@@ -18,6 +18,12 @@ const FREE = [
   { k: "drawer" as const, n: "03", title: "Cash drawer", text: "Opens on every cash sale." },
 ];
 
+const ALT = {
+  scale: "Zebra bioptic scanner scale",
+  printer: "Zebra ZQ610 Plus mobile receipt printer",
+  drawer: "Black cash drawer with key lock",
+};
+
 const OPTIONAL = [
   { k: "customerDisplay" as const, title: "Customer display & PIN pad", text: "Shopper screen and card reader." },
   { k: "handheld" as const, title: "Handheld scanner", text: "Scan deliveries and audit coolers." },
@@ -62,7 +68,15 @@ export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
           {FREE.map((h) => (
             <article key={h.k} className="group card-lift">
               <div data-reveal="media" className="zoom-frame relative rounded-[24px] bg-ink aspect-[4/3.1]">
-                <img src={photo(h.k)} alt={h.title} loading="lazy" className="slot-img" />
+                <img src={photo(h.k)} alt={ALT[h.k]} loading="lazy" className={`slot-img ${h.k === "scale" ? "!object-[50%_58%]" : ""}`} />
+                {h.k === "printer" && MEDIA.hardware.printerOpen && (
+                  <img
+                    src={MEDIA.hardware.printerOpen}
+                    alt="Zebra ZQ610 Plus printer with the cover open and a paper roll loaded"
+                    loading="lazy"
+                    className="slot-img absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                  />
+                )}
                 <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-neon text-ink text-[12.5px] font-bold px-3.5 py-1.5">
                   $0 · included
                 </span>

@@ -14,7 +14,7 @@
  */
 export const MEDIA = {
   /** Hero: the whole POS (terminal, scale, printer). Replaces the live demo screen frame. */
-  heroHardware: "/images/slots/hero.jpg" as string | null,
+  heroHardware: null as string | null, // was "/images/slots/hero.jpg"; null shows the live animated POS screen
 
   /** Real POS screen captures. Each replaces the built-in live screen in the "three screens" section. */
   screens: {
@@ -28,6 +28,8 @@ export const MEDIA = {
   hardware: {
     scale: "/images/slots/scale.jpg" as string | null,
     printer: "/images/slots/printer.jpg" as string | null,
+    /** Second printer shot, shown on hover over the printer card. */
+    printerOpen: "/images/slots/printer-open.jpg" as string | null,
     drawer: "/images/slots/drawer.jpg" as string | null,
     customerDisplay: "/images/slots/customer-display.jpg" as string | null,
     handheld: "/images/slots/handheld.jpg" as string | null,
