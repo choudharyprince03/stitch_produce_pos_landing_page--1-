@@ -14,7 +14,6 @@ gsap.registerPlugin(ScrollTrigger);
 const LOOP = "3.2s";
 export const HeroMotion: React.FC = () => {
   const still = prefersReducedMotion();
-  const toScreen = "M640 884 L640 756";
   const toPrinter = "M964 1106 C1000 1106 1030 1110 1064 1110";
   return (
     <svg viewBox="0 0 1600 1487" className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden>
@@ -39,7 +38,6 @@ export const HeroMotion: React.FC = () => {
       </defs>
 
       {/* faint tracks so the paths read even between packets */}
-      <path d={toScreen} fill="none" stroke="#31e327" strokeOpacity="0.22" strokeWidth="2" strokeDasharray="2 8" strokeLinecap="round" />
       <path d={toPrinter} fill="none" stroke="#31e327" strokeOpacity="0.22" strokeWidth="2" strokeDasharray="2 8" strokeLinecap="round" />
       <circle cx="919" cy="958" r="5" fill="#31e327" opacity="0.7" filter="url(#mg-glow)">
         {!still && <animate attributeName="opacity" values="0.55;0.55;1;0.55" keyTimes="0;0.46;0.5;1" dur={LOOP} repeatCount="indefinite" />}
@@ -70,7 +68,6 @@ export const HeroMotion: React.FC = () => {
 
           {/* data packets */}
           {[
-            { d: toScreen, kt: "0;0.5;0.66;1", ot: "0;0.499;0.5;0.66;0.67;1" },
             { d: toPrinter, kt: "0;0.62;0.8;1", ot: "0;0.619;0.62;0.8;0.81;1" },
           ].map((p) => (
             <g key={p.d} opacity="0" filter="url(#mg-glow)">

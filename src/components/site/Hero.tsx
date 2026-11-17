@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { MEDIA } from "../../media";
 import { DeviceFrame, PosScreen, ScaledScreen } from "./screens";
 import { prefersReducedMotion } from "./hooks";
-import { HeroMotion } from "./motion";
 
 interface HeroProps {
   onBookDemo: (context?: string) => void;
@@ -108,9 +107,9 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
             <div className="relative">
             <img
               src={MEDIA.heroHardware}
-              alt="Produce Ai POS: touchscreen on an arm, scanner scale and receipt printer"
-              width={1600}
-              height={1487}
+              alt="Produce Ai POS: touchscreen, Zebra scanner scale and Epson receipt printer"
+              width={1303}
+              height={1207}
               fetchPriority="high"
               className="w-full h-auto"
               style={{
@@ -122,7 +121,6 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
                 maskComposite: "intersect",
               }}
             />
-            <HeroMotion />
             </div>
           ) : (
             <div className="float-y">
