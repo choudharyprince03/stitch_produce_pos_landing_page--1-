@@ -20,6 +20,7 @@ export const MEDIA = {
   screens: {
     checkout: "/images/slots/checkout.jpg" as string | null,
     payment: "/images/slots/payment.jpg" as string | null,
+    pricebook: "/images/slots/pricebook.jpg" as string | null,
     backoffice: "/images/slots/backoffice.jpg" as string | null,
   },
 

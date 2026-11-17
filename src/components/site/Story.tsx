@@ -25,8 +25,16 @@ const CHAPTERS = [
     Screen: InvoiceScreen,
   },
   {
-    key: "backoffice" as const,
+    key: "pricebook" as const,
     n: "03",
+    title: "Pricebook",
+    lead: "Every item, price and stock level in one list.",
+    points: [],
+    Screen: InvoiceScreen,
+  },
+  {
+    key: "backoffice" as const,
+    n: "04",
     title: "Back office",
     lead: "Run the store from your phone or laptop.",
     points: ["Live sales and profit by department", "Z-reports and shift audits", "Staff roles and multi-store view"],
@@ -37,8 +45,8 @@ const CHAPTERS = [
 const ScreenOrImage: React.FC<{ c: (typeof CHAPTERS)[number] }> = ({ c }) => {
   const src = MEDIA.screens[c.key];
   return src ? (
-    <div className="aspect-[900/560]">
-      <img src={src} alt={`Produce Ai ${c.title} screen`} className="slot-img" />
+    <div className="aspect-[1600/977]">
+      <img src={src} alt={`Produce Ai ${c.title} screen`} className="slot-img !object-contain" />
     </div>
   ) : (
     <ScaledScreen>
@@ -73,7 +81,7 @@ export const Story: React.FC = () => {
 
   const heading = (
     <h2 data-reveal="head" className="h-display h-section max-w-[34rem] text-balance !leading-[1.04]">
-      Three screens, one system.
+      Four screens, one system.
     </h2>
   );
 
@@ -141,7 +149,7 @@ export const Story: React.FC = () => {
           <div className="col-span-7 relative">
             <div className="absolute -inset-10 bg-[radial-gradient(closest-side,rgba(49,227,39,0.22),transparent_70%)] pointer-events-none" />
             <DeviceFrame className="relative">
-              <div className="relative aspect-[900/560]">
+              <div className="relative aspect-[1600/977]">
                 <span key={active} aria-hidden className="glint z-10" />
                 {CHAPTERS.map((c, i) => (
                   <div

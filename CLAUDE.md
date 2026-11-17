@@ -24,7 +24,7 @@ React 18 + Vite + TypeScript + Tailwind 3 + GSAP (ScrollTrigger) + lucide-react.
   fully responsive.** Headings state the point plainly. Don't add copy back. Don't add cards/gradients for decoration.
 - Built under the `design-taste-frontend` skill rules: no caption under images, no invented stats/reviews,
   hover = lift 2px / photo zoom 1.03 / buttons step + press, nothing animates on scroll except the two authored
-  moments (pinned "Three screens, one system" section and the big "Free scale / Free printer / Free cash drawer" text pass).
+  moments (pinned "Four screens, one system" section and the big "Free scale / Free printer / Free cash drawer" text pass).
   UI-mock numbers inside the live screens are demo data only.
 
 ## Files
