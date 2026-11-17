@@ -122,11 +122,11 @@ export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
         </div>
         <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {OPTIONAL.map((o) => (
-            <article key={o.k} data-reveal="rise" className="group card-lift flex sm:flex-col gap-5 rounded-[24px] bg-white p-3 pr-5 sm:p-3 border border-ink/[0.07] hover:shadow-[0_24px_50px_-24px_rgba(7,8,10,0.35)]">
-              <div className="zoom-frame rounded-[16px] bg-ink w-[38%] sm:w-full shrink-0 aspect-[4/3]">
+            <article key={o.k} data-reveal="rise" className="group card-lift flex flex-col gap-5 rounded-[24px] bg-white p-3 border border-ink/[0.07] hover:shadow-[0_24px_50px_-24px_rgba(7,8,10,0.35)]">
+              <div className="zoom-frame rounded-[16px] bg-ink w-full shrink-0 aspect-[4/3]">
                 <img src={photo(o.k)} alt={o.title} loading="lazy" className="slot-img" />
               </div>
-              <div className="sm:px-3 sm:pb-3 self-center sm:self-auto">
+              <div className="px-3 pb-3">
                 <h4 className="text-[18px] font-bold leading-tight">{o.title}</h4>
                 <p className="mt-1.5 text-[15px] leading-[1.55] text-ink/60">{o.text}</p>
               </div>
