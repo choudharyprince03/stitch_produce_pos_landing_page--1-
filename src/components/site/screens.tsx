@@ -45,8 +45,8 @@ export const DeviceFrame: React.FC<{
   className?: string;
 }> = ({ children, stand = false, className = "" }) => (
   <div className={`relative ${className}`}>
-    <div className="rounded-[26px] bg-gradient-to-b from-[#2a2d2a] to-[#111311] p-[10px] shadow-[0_40px_90px_-20px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.1)_inset]">
-      <div className="relative rounded-[18px] overflow-hidden bg-[#f6f6f2]">{children}</div>
+    <div className="rounded-[16px] sm:rounded-[20px] bg-gradient-to-b from-[#2a2d2a] to-[#111311] p-[10px] shadow-[0_40px_90px_-20px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.1)_inset]">
+      <div className="relative rounded-[6px] sm:rounded-[10px] overflow-hidden bg-[#f1f2f4]">{children}</div>
       <span className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#050605] ring-1 ring-white/10" />
     </div>
     {stand && (

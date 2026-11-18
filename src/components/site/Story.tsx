@@ -46,7 +46,7 @@ const ScreenOrImage: React.FC<{ c: (typeof CHAPTERS)[number] }> = ({ c }) => {
   const src = MEDIA.screens[c.key];
   return src ? (
     <div className="aspect-[1600/977]">
-      <img src={src} alt={`Produce Ai ${c.title} screen`} className="slot-img !object-contain" />
+      <img src={src} alt={`Produce Ai ${c.title} screen`} className="slot-img" />
     </div>
   ) : (
     <ScaledScreen>
@@ -81,7 +81,7 @@ export const Story: React.FC = () => {
 
   const heading = (
     <h2 data-reveal="head" className="h-display h-section max-w-[34rem] text-balance !leading-[1.04]">
-      Four screens, one system.
+      Your whole store, one system.
     </h2>
   );
 
