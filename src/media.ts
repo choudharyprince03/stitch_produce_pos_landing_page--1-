@@ -23,6 +23,7 @@ export const MEDIA = {
   screens: {
     checkout: "/images/slots/checkout.jpg" as string | null,
     payment: "/images/slots/payment.jpg" as string | null,
+    scale: "/images/slots/scale-station.jpg" as string | null,
     pricebook: "/images/slots/pricebook.jpg" as string | null,
     backoffice: "/images/slots/backoffice.jpg" as string | null,
   },
@@ -30,10 +31,14 @@ export const MEDIA = {
   /** Free hardware kit + optional add-ons. Stand-in photos are used until you set these. */
   hardware: {
     scale: "/images/slots/scale.jpg" as string | null,
+    /** Second scale shot, shown on hover over the scale card. */
+    scaleOpen: "/images/slots/scale-open.jpg" as string | null,
     printer: "/images/slots/printer.jpg" as string | null,
     /** Second printer shot, shown on hover over the printer card. */
     printerOpen: "/images/slots/printer-open.jpg" as string | null,
     drawer: "/images/slots/drawer.jpg" as string | null,
+    /** Second drawer shot (drawer open), shown on hover over the drawer card. */
+    drawerOpen: "/images/slots/drawer-open.jpg" as string | null,
     customerDisplay: "/images/slots/customer-display.jpg" as string | null,
     handheld: "/images/slots/handheld.jpg" as string | null,
     shelfTags: null as string | null,

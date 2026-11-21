@@ -30,6 +30,12 @@ const OPTIONAL = [
   { k: "shelfTags" as const, title: "Electronic shelf tags", text: "Prices update wirelessly." },
 ];
 
+const HOVER: Record<string, { src: string; alt: string } | undefined> = {
+  scale: MEDIA.hardware.scaleOpen ? { src: MEDIA.hardware.scaleOpen, alt: "Zebra bioptic scanner scale with the load cell and scanner window exposed" } : undefined,
+  printer: MEDIA.hardware.printerOpen ? { src: MEDIA.hardware.printerOpen, alt: "Zebra ZQ610 Plus printer with the cover open and a paper roll loaded" } : undefined,
+  drawer: MEDIA.hardware.drawerOpen ? { src: MEDIA.hardware.drawerOpen, alt: "Cash drawer open, showing the bill and coin tray" } : undefined,
+};
+
 const photo = (k: keyof typeof STAND_IN & keyof typeof MEDIA.hardware) => MEDIA.hardware[k] ?? STAND_IN[k];
 
 export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
@@ -69,10 +75,10 @@ export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
             <article key={h.k} className="group card-lift">
               <div data-reveal="media" className="zoom-frame relative rounded-[24px] bg-ink aspect-[4/3.1]">
                 <img src={photo(h.k)} alt={ALT[h.k]} loading="lazy" className={`slot-img ${h.k === "scale" ? "!object-[50%_58%]" : ""}`} />
-                {h.k === "printer" && MEDIA.hardware.printerOpen && (
+                {HOVER[h.k] && (
                   <img
-                    src={MEDIA.hardware.printerOpen}
-                    alt="Zebra ZQ610 Plus printer with the cover open and a paper roll loaded"
+                    src={HOVER[h.k]!.src}
+                    alt={HOVER[h.k]!.alt}
                     loading="lazy"
                     className="slot-img absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   />
@@ -93,7 +99,7 @@ export const Hardware: React.FC<Props> = ({ onBookDemo }) => {
         <div className="pass-row flex whitespace-nowrap will-change-transform">
           {Array.from({ length: 2 }).map((_, k) => (
             <div key={k} className="flex items-center gap-8 pr-8 text-[clamp(72px,13vw,190px)] font-extrabold tracking-[-0.045em] leading-none">
-              {["Free scale", "Free printer", "Free cash drawer"].map((t, i) => (
+              {["EBT SNAP & WIC", "Apple Pay", "OTC", "Gift cards", "Chip cards"].map((t, i) => (
                 <React.Fragment key={t}>
                   <span
                     style={i === 1 ? { WebkitTextStroke: "2px #07080a", color: "transparent" } : undefined}

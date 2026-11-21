@@ -4,11 +4,12 @@ import { LegalDoc } from "./legalContent";
 const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 /** Where am I? Three pages, one row. */
-export const PageTabs: React.FC<{ current: "privacy-policy" | "terms-of-service" | "contact" }> = ({ current }) => {
+export const PageTabs: React.FC<{ current: "privacy-policy" | "terms-of-service" | "contact" | "partnerships" }> = ({ current }) => {
   const tabs = [
     ["privacy-policy", "Privacy Policy"],
     ["terms-of-service", "Terms of Service"],
     ["contact", "Contact"],
+    ["partnerships", "Partnerships"],
   ] as const;
   return (
     <nav aria-label="Company pages" className="flex flex-wrap items-center gap-x-8 gap-y-2 text-[15px]">
@@ -162,8 +163,8 @@ export const LegalPage: React.FC<{ doc: LegalDoc }> = ({ doc }) => {
                 <a href="mailto:support@produceai.co" className="btn btn-ink h-12 px-6 text-[15px]">
                   support@produceai.co
                 </a>
-                <a href="tel:3472130687" className="btn h-12 px-6 text-[15px] border border-ink/25 hover:bg-ink/5 tabular-nums">
-                  (347) 213-0687
+                <a href="tel:+13472130687" className="btn h-12 px-6 text-[15px] border border-ink/25 hover:bg-ink/5 tabular-nums">
+                  +1 (347) 213-0687
                 </a>
               </div>
             </div>

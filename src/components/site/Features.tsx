@@ -151,25 +151,48 @@ const CARDS = [
 export const Features: React.FC = () => (
   <section id="features" className="relative bg-ink text-white py-32 sm:py-48 overflow-hidden">
     <div className="absolute inset-0 ground-grid opacity-50 pointer-events-none" />
+    <div
+      aria-hidden
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        background:
+          "radial-gradient(45% 40% at 0% 0%, rgba(255,255,255,0.16), transparent 70%), radial-gradient(45% 40% at 100% 0%, rgba(255,255,255,0.16), transparent 70%), radial-gradient(45% 40% at 0% 100%, rgba(255,255,255,0.16), transparent 70%), radial-gradient(45% 40% at 100% 100%, rgba(255,255,255,0.16), transparent 70%)",
+      }}
+    />
     <div className="relative max-w-[80rem] mx-auto px-5 sm:px-10">
       <h2 data-reveal="head" className="h-display h-section max-w-[40rem] text-balance !leading-[1.04]">
         Made for the produce counter.
       </h2>
 
       <DrawLine className="mt-14" />
-      <div className="mt-14 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-        {CARDS.map((c) => (
+      <div className="mt-14 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+        {CARDS.map((c, i) => (
           <article
             key={c.title}
             data-reveal="rise"
             onMouseMove={spotMove}
-            className={`spot card-lift rounded-[28px] border border-white/10 bg-panel p-5 sm:p-8 flex flex-col hover:border-white/25`}
+            className="spot card-lift group rounded-[20px] border border-white/[0.09] bg-[linear-gradient(180deg,#131613_0%,#0b0d0b_100%)] shadow-[0_1px_0_rgba(255,255,255,0.06)_inset] flex flex-col overflow-hidden hover:border-white/25"
           >
-            <div className="h-[240px] sm:h-[300px] rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent border border-white/[0.06] p-5 sm:p-6 overflow-hidden">
-              {c.visual}
+            <div className="relative h-[250px] sm:h-[290px] px-6 sm:px-10 py-6 overflow-hidden">
+              <div
+                aria-hidden
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(60% 70% at 50% 55%, rgba(49,227,39,0.10), transparent 70%), radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1.2px) 0 0/18px 18px",
+                  maskImage: "radial-gradient(75% 85% at 50% 50%, #000 40%, transparent 100%)",
+                  WebkitMaskImage: "radial-gradient(75% 85% at 50% 50%, #000 40%, transparent 100%)",
+                }}
+              />
+              <span className="absolute left-5 top-5 font-mono text-[11px] tracking-[0.14em] text-white/35">
+                0{i + 1}
+              </span>
+              <div className="relative h-full">{c.visual}</div>
             </div>
-            <h3 className="mt-8 text-[24px] font-bold tracking-tight leading-[1.2]">{c.title}</h3>
-            <p className="mt-2 text-[16px] leading-[1.55] text-white/55">{c.text}</p>
+            <div className="border-t border-white/[0.08] px-6 sm:px-8 py-6 sm:py-7">
+              <h3 className="text-[22px] font-bold tracking-tight leading-[1.2]">{c.title}</h3>
+              <p className="mt-1.5 text-[15.5px] leading-[1.5] text-white/55">{c.text}</p>
+            </div>
           </article>
         ))}
       </div>

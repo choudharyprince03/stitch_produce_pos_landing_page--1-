@@ -9,6 +9,7 @@ import { Footer } from "./components/site/Footer";
 import { BookDemoModal } from "./components/vori/BookDemoModal";
 import { LegalPage } from "./components/vori/LegalPage";
 import { ContactPage } from "./components/vori/ContactPage";
+import { PartnershipsPage } from "./components/vori/PartnershipsPage";
 import { PRIVACY, TERMS } from "./components/vori/legalContent";
 import { useReveal } from "./components/site/hooks";
 import { ScrollTop } from "./components/site/ScrollTop";
@@ -29,6 +30,7 @@ export default function App() {
       "/privacy-policy": "Privacy Policy | Produce AI POS",
       "/terms-of-service": "Terms of Service | Produce AI POS",
       "/contact": "Contact Us | Produce AI POS",
+      "/partnerships": "Partnerships | Produce AI POS",
     };
     if (titles[path]) document.title = titles[path];
     window.scrollTo(0, 0);
@@ -55,6 +57,8 @@ export default function App() {
           <LegalPage doc={TERMS} />
         ) : path === "/contact" ? (
           <ContactPage />
+        ) : path === "/partnerships" ? (
+          <PartnershipsPage />
         ) : (
           <>
             <Hero onBookDemo={openBookDemo} />
@@ -68,7 +72,7 @@ export default function App() {
         )}
       </main>
 
-      <Footer onBookDemo={openBookDemo} compact={path === "/privacy-policy" || path === "/terms-of-service" || path === "/contact"} />
+      <Footer onBookDemo={openBookDemo} compact={path === "/privacy-policy" || path === "/terms-of-service" || path === "/contact" || path === "/partnerships"} />
 
       <ScrollTop />
 

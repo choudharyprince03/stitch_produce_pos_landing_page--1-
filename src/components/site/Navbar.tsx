@@ -5,10 +5,11 @@ interface NavbarProps {
   onBookDemo: (context?: string) => void;
 }
 
-const LINKS = [
+const LINKS: { label: string; id: string; page?: string }[] = [
   { label: "How it works", id: "system" },
   { label: "Hardware", id: "hardware" },
   { label: "FAQ", id: "faq" },
+  { label: "Partnerships", id: "partnerships", page: "/partnerships" },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
@@ -68,8 +69,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
             {LINKS.map((l) => (
               <a
                 key={l.id}
-                href={`/#${l.id}`}
-                onClick={go(l.id)}
+                href={l.page ?? `/#${l.id}`}
+                onClick={l.page ? () => setOpen(false) : go(l.id)}
                 className="link-draw text-[14.5px] text-white/65 hover:text-white transition-colors"
               >
                 {l.label}
@@ -113,8 +114,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
           {LINKS.map((l, i) => (
             <a
               key={l.id}
-              href={`/#${l.id}`}
-              onClick={go(l.id)}
+              href={l.page ?? `/#${l.id}`}
+              onClick={l.page ? () => setOpen(false) : go(l.id)}
               className="py-5 text-[32px] font-bold tracking-tight text-white/90"
               style={{
                 transform: open ? "none" : "translateY(16px)",
@@ -134,8 +135,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onBookDemo }) => {
           >
             Get free hardware
           </button>
-          <a href="tel:3472130687" className="mt-5 text-center text-white/50 tabular-nums">
-            (347) 213-0687
+          <a href="tel:+13472130687" className="mt-5 text-center text-white/50 tabular-nums">
+            +1 (347) 213-0687
           </a>
         </div>
       </div>

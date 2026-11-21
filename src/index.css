@@ -85,7 +85,7 @@ p, li, dd { text-wrap: pretty; }
   background-size: 26px 26px;
 }
 .glow-neon {
-  background: radial-gradient(closest-side, rgba(49, 227, 39, 0.32), rgba(49, 227, 39, 0) 70%);
+  background: radial-gradient(closest-side, rgba(49, 227, 39, 0.5), rgba(49, 227, 39, 0) 72%);
 }
 
 /* ---------- Buttons ---------- */

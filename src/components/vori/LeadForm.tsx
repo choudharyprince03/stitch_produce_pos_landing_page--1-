@@ -11,7 +11,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
   const [storeName, setStoreName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [lanes, setLanes] = useState("1 to 2 Registers");
+  const [lanes, setLanes] = useState("");
   const [address, setAddress] = useState("");
   const [addHandheld, setAddHandheld] = useState(false);
   const [addEsl, setAddEsl] = useState(false);
@@ -61,10 +61,13 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+        <p className="text-[13px] text-[#07080a]/55">
+          <span className="text-[#d92d20]">*</span> Required
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-[13.5px] font-medium text-[#07080a]/70 mb-1.5">
-              Name
+              Name<span className="text-[#d92d20] ml-0.5" aria-hidden="true">*</span>
             </label>
             <input
               type="text"
@@ -72,12 +75,13 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               autoComplete="name"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px]"
+              placeholder="e.g. Maria Lopez"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px] placeholder:text-[#07080a]/35"
             />
           </div>
           <div>
             <label className="block text-[13.5px] font-medium text-[#07080a]/70 mb-1.5">
-              Store
+              Store<span className="text-[#d92d20] ml-0.5" aria-hidden="true">*</span>
             </label>
             <input
               type="text"
@@ -85,7 +89,8 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={storeName}
               onChange={(e) => setStoreName(e.target.value)}
               autoComplete="organization"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px]"
+              placeholder="e.g. Lopez Fresh Market"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px] placeholder:text-[#07080a]/35"
             />
           </div>
         </div>
@@ -93,7 +98,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-[13.5px] font-medium text-[#07080a]/70 mb-1.5">
-              Email
+              Email<span className="text-[#d92d20] ml-0.5" aria-hidden="true">*</span>
             </label>
             <input
               type="email"
@@ -101,12 +106,13 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               autoComplete="email"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px]"
+              placeholder="e.g. maria@lopezfresh.com"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px] placeholder:text-[#07080a]/35"
             />
           </div>
           <div>
             <label className="block text-[13.5px] font-medium text-[#07080a]/70 mb-1.5">
-              Phone
+              Phone<span className="text-[#d92d20] ml-0.5" aria-hidden="true">*</span>
             </label>
             <input
               type="tel"
@@ -114,7 +120,8 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               autoComplete="tel"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px]"
+              placeholder="e.g. +1 (347) 555-0123"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px] placeholder:text-[#07080a]/35"
             />
           </div>
         </div>
@@ -122,13 +129,17 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-[13.5px] font-medium text-[#07080a]/70 mb-1.5">
-              Registers
+              Registers<span className="text-[#d92d20] ml-0.5" aria-hidden="true">*</span>
             </label>
             <select
+              required
               value={lanes}
               onChange={(e) => setLanes(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px]"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px] placeholder:text-[#07080a]/35"
             >
+              <option value="" disabled>
+                e.g. 3 to 5 Registers
+              </option>
               <option value="1 to 2 Registers">1 to 2 Registers</option>
               <option value="3 to 5 Registers">3 to 5 Registers</option>
               <option value="6+ Registers">6+ Registers</option>
@@ -136,7 +147,7 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
           </div>
           <div>
             <label className="block text-[13.5px] font-medium text-[#07080a]/70 mb-1.5">
-              City and zip
+              City and zip<span className="text-[#d92d20] ml-0.5" aria-hidden="true">*</span>
             </label>
             <input
               type="text"
@@ -144,7 +155,8 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               autoComplete="postal-code"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px]"
+              placeholder="e.g. Bronx, NY 10467"
+              className="w-full px-4 py-3 rounded-xl bg-white border border-[#07080a]/20 focus:border-[#07080a] focus:outline-none text-[15px] placeholder:text-[#07080a]/35"
             />
           </div>
         </div>
@@ -197,10 +209,10 @@ export const LeadForm: React.FC<LeadFormProps> = ({ context, onDone }) => {
           <span>
             Prefer to talk? Call{" "}
             <a
-              href="tel:3472130687"
+              href="tel:+13472130687"
               className="font-medium text-[#0f0f0f] underline underline-offset-4"
             >
-              (347) 213-0687
+              +1 (347) 213-0687
             </a>
           </span>
         </div>

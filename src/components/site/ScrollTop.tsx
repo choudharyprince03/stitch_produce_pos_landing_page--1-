@@ -26,8 +26,8 @@ export const ScrollTop: React.FC = () => {
         <ArrowUp className="w-4 h-4" strokeWidth={2.5} />
       </button>
       <a
-        href="tel:3472130687"
-        aria-label="Call (347) 213-0687"
+        href="tel:+13472130687"
+        aria-label="Call +1 (347) 213-0687"
         className="sm:hidden h-10 w-10 rounded-full bg-neon text-ink flex items-center justify-center shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-transform duration-200 active:scale-95"
       >
         <Phone className="w-4 h-4" strokeWidth={2.25} />

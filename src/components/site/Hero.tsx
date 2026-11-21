@@ -53,19 +53,25 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
     <section
       ref={root}
       id="top"
-      className="relative bg-ink text-white min-h-[100svh] flex items-center overflow-hidden"
+      className="relative bg-ink text-white min-h-[calc(100svh-5rem)] flex items-center overflow-hidden"
     >
       <div className="absolute inset-0 ground-grid pointer-events-none" />
       <div
         data-hero="glow"
-        className="glow-neon glow-drift absolute right-[-10%] top-[8%] w-[70vw] max-w-[1000px] aspect-square pointer-events-none"
+        className="glow-neon glow-drift absolute left-[-20%] top-[12%] w-[85vw] max-w-[1300px] aspect-square pointer-events-none"
+      />
+
+      <div
+        aria-hidden
+        className="absolute pointer-events-none right-[-4%] top-[10%] w-[78vw] max-w-[1200px] h-[85%]"
+        style={{ background: "radial-gradient(closest-side, rgba(255,255,255,0.5), rgba(255,255,255,0.22) 55%, rgba(255,255,255,0) 100%)" }}
       />
 
       <div className="relative z-10 w-full max-w-[80rem] mx-auto px-5 sm:px-10 pt-32 pb-20 lg:pt-36 lg:pb-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-6 items-center">
         <div className="lg:col-span-5">
           <h1 className="h-display text-[46px] sm:text-[68px] xl:text-[80px] text-balance">
             {H1.map((w, i) => (
-              <span key={i} className="inline-block overflow-hidden align-bottom pb-[0.08em] -mb-[0.08em] mr-[0.22em]">
+              <span key={i} className="inline-block overflow-hidden align-bottom pt-[0.06em] -mt-[0.06em] pb-[0.3em] -mb-[0.3em] pl-[0.08em] -ml-[0.08em] pr-[0.08em] mr-[0.14em]">
                 <span
                   className={`h1-word inline-block ${w.accent ? "serif-accent text-neon" : ""}`}
                   style={w.accent ? { fontSize: "1.06em", letterSpacing: "-0.02em" } : undefined}
@@ -123,7 +129,7 @@ export const Hero: React.FC<HeroProps> = ({ onBookDemo }) => {
             />
             </div>
           ) : (
-            <div className="float-y">
+            <div>
               <DeviceFrame stand>
                 {MEDIA.heroScreen ? (
                   <img

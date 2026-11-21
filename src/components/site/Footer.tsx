@@ -40,8 +40,8 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: bool
         >
           Get free hardware <ArrowRight className="w-5 h-5 arrow" />
         </button>
-        <a href="tel:3472130687" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] text-[17px] text-white/85 tabular-nums self-start sm:self-auto">
-          (347) 213-0687
+        <a href="tel:+13472130687" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] text-[17px] text-white/85 tabular-nums self-start sm:self-auto">
+          +1 (347) 213-0687
         </a>
       </div>
 
@@ -69,6 +69,7 @@ export const Footer: React.FC<{ onBookDemo: (c?: string) => void; compact?: bool
           <a href="/privacy-policy" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Privacy Policy</a>
           <a href="/terms-of-service" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Terms of Service</a>
           <a href="/contact" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Contact Us</a>
+          <a href="/partnerships" className="link-draw relative inline-block before:absolute before:inset-x-0 before:-inset-y-3 before:content-[''] hover:text-white transition-colors">Partnerships</a>
         </div>
       </div>
     </div>

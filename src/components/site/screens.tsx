@@ -45,14 +45,24 @@ export const DeviceFrame: React.FC<{
   className?: string;
 }> = ({ children, stand = false, className = "" }) => (
   <div className={`relative ${className}`}>
-    <div className="rounded-[16px] sm:rounded-[20px] bg-gradient-to-b from-[#2a2d2a] to-[#111311] p-[10px] shadow-[0_40px_90px_-20px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.1)_inset]">
-      <div className="relative rounded-[6px] sm:rounded-[10px] overflow-hidden bg-[#f1f2f4]">{children}</div>
-      <span className="absolute top-[3px] left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#050605] ring-1 ring-white/10" />
+    {/* aluminium shell */}
+    <div className="relative rounded-[8px] sm:rounded-[10px] p-[1.5px] bg-[linear-gradient(160deg,#8d928b_0%,#3a3e3a_18%,#1a1c1a_55%,#4a4f48_100%)] shadow-[0_60px_120px_-30px_rgba(0,0,0,0.95),0_0_100px_-24px_rgba(255,255,255,0.32),0_0_0_1px_rgba(0,0,0,0.6)]">
+      {/* black glass bezel */}
+      <div className="relative rounded-[6.5px] sm:rounded-[8.5px] bg-[#050605] px-[8px] pt-[8px] pb-[20px] sm:px-[13px] sm:pt-[13px] sm:pb-[30px] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(255,255,255,0.04)]">
+        <div className="relative rounded-[2px] sm:rounded-[3px] overflow-hidden bg-[#f1f2f4] shadow-[0_0_0_1px_rgba(255,255,255,0.08),0_0_30px_rgba(255,255,255,0.12)]">
+          {children}
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.12)_0%,rgba(255,255,255,0.03)_30%,rgba(255,255,255,0)_45%)]" />
+          <div className="pointer-events-none absolute inset-0 shadow-[inset_0_0_14px_rgba(0,0,0,0.18)]" />
+        </div>
+        <span className="absolute bottom-[5px] sm:bottom-[8px] left-1/2 -translate-x-1/2 text-[7px] sm:text-[10px] font-medium tracking-[0.18em] uppercase text-white/55 select-none leading-none">Produce POS</span>
+        <span className="absolute top-[2.5px] sm:top-[4.5px] left-1/2 -translate-x-1/2 w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#0c1210] ring-1 ring-white/15 shadow-[inset_0_0_2px_rgba(80,140,255,0.5)]" />
+      </div>
     </div>
     {stand && (
       <>
-        <div className="mx-auto h-9 w-[16%] bg-gradient-to-b from-[#1c1f1c] to-[#2c302c]" />
-        <div className="mx-auto h-3 w-[46%] rounded-[999px] bg-gradient-to-b from-[#3a3f3a] to-[#161816] shadow-[0_24px_40px_-10px_rgba(0,0,0,0.9)]" />
+        <div className="mx-auto h-12 w-[13%] bg-gradient-to-r from-[#161816] via-[#4a4f48] to-[#161816] [clip-path:polygon(10%_0,90%_0,100%_100%,0_100%)] shadow-[0_0_0_1px_rgba(255,255,255,0.05)]" />
+        <div className="relative mx-auto h-[10px] w-[38%] rounded-[999px] bg-gradient-to-b from-[#5a5f58] via-[#2a2d29] to-[#121412] shadow-[0_1px_0_rgba(255,255,255,0.35)_inset,0_36px_50px_-10px_rgba(0,0,0,0.95)]" />
+        <div aria-hidden className="mx-auto mt-1 h-6 w-[44%] rounded-[50%] bg-[radial-gradient(closest-side,rgba(255,255,255,0.18),transparent)] blur-md" />
       </>
     )}
   </div>

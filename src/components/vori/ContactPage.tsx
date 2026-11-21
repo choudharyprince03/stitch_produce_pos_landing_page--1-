@@ -3,7 +3,7 @@ import { LeadForm } from "./LeadForm";
 import { PageTabs } from "./LegalPage";
 
 const WAYS = [
-  { label: "Call", value: "(347) 213-0687", href: "tel:3472130687", note: "Support is open 24/7" },
+  { label: "Call", value: "+1 (347) 213-0687", href: "tel:+13472130687", note: "Support is open 24/7" },
   { label: "Email", value: "support@produceai.co", href: "mailto:support@produceai.co" },
   { label: "Visit", value: "3508 White Plains Rd, Bronx, NY" },
 ];
